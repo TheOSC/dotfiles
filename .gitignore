@@ -1,5 +1,5 @@
 # Generated theme files (written by wallust at runtime)
-hyprland/.config/hypr/colors.conf
+hyprland/.config/hypr/colors.lua
 waybar/.config/waybar/colors.css
 kitty/.config/kitty/theme.conf
 dunst/.config/dunst/colors
