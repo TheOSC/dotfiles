@@ -7,7 +7,7 @@
 # Color generation backend
 # dark-vibrant: best for muted/dark wallpapers (our primary aesthetic)
 # Options: dark, dark-vibrant, light, light-vibrant, full, full-vibrant
-palette = "dark-vibrant"
+palette = "salience-dark"
 
 # Color generation method
 # kmeans: best quality, slightly slower
@@ -18,7 +18,7 @@ backend = "kmeans"
 threshold = 20
 
 # Saturation (0.0 - 1.0). Lower = more muted, fits our aesthetic
-saturation = 0.7
+saturation = 70
 
 # =============================================================================
 # TEMPLATES
