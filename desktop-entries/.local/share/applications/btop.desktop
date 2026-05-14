@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=System Monitor
+GenericName=System Monitor
+Comment=Monitor system resources and processes
+Exec=kitty --class btop --title "System Monitor" -e btop
+Icon=utilities-system-monitor
+Terminal=false
+Keywords=system;monitor;cpu;memory;ram;processes;task;manager;performance;btop;
+Categories=System;Monitor;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Thunar
+GenericName=File Manager
+Comment=GUI file manager for drag-and-drop and USB media mounting
+Exec=thunar %F
+Icon=system-file-manager
+Terminal=false
+Keywords=files;folders;usb;flash;drive;mount;browse;drag;drop;thunar;gui;
+Categories=FileManager;System;

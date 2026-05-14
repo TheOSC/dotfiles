@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Audio Mixer
+GenericName=Audio Mixer
+Comment=Control audio volume and routing
+Exec=kitty --class pulsemixer --title "Audio Mixer" -e pulsemixer
+Icon=audio-volume-high
+Terminal=false
+Keywords=audio;sound;volume;mixer;pulse;pipewire;speakers;headphones;output;input;
+Categories=AudioVideo;Audio;Mixer;

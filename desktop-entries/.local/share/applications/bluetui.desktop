@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Bluetooth Manager
+GenericName=Bluetooth Manager
+Comment=Manage bluetooth devices and connections
+Exec=kitty --class bluetui --title "Bluetooth" -e bluetui
+Icon=bluetooth
+Terminal=false
+Keywords=bluetooth;wireless;pair;connect;devices;audio;headphones;speaker;mouse;keyboard;
+Categories=System;

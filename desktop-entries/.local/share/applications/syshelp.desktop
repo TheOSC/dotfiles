@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=System Reference
+GenericName=System Help
+Comment=Searchable keybind and tool reference for this system
+Exec=kitty --class syshelp --title "System Reference" -e syshelp
+Icon=help-browser
+Terminal=false
+Keywords=help;keybind;reference;cheatsheet;shortcuts;tools;system;syshelp;
+Categories=System;

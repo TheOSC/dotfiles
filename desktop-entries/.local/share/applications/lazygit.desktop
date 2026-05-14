@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=LazyGit
+GenericName=Git Client
+Comment=Visual TUI git client
+Exec=kitty --class lazygit --title "LazyGit" -e lazygit
+Icon=git
+Terminal=false
+Keywords=git;version;control;commit;push;pull;branch;diff;lazygit;repository;
+Categories=Development;

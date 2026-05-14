@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=File Manager
+GenericName=File Manager
+Comment=Browse and manage files
+Exec=kitty --class yazi --title "File Manager" -e yazi
+Icon=system-file-manager
+Terminal=false
+Keywords=files;folders;browse;manager;explorer;directory;disk;storage;yazi;
+Categories=FileManager;System;

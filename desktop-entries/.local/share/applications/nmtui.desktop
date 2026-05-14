@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Network Manager
+GenericName=Network Manager
+Comment=Manage network and WiFi connections
+Exec=kitty --class nmtui --title "Network" -e nmtui
+Icon=network-wireless
+Terminal=false
+Keywords=network;wifi;wireless;ethernet;connection;internet;vpn;ip;nmtui;
+Categories=Network;System;

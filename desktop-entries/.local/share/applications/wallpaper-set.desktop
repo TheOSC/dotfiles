@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Set Wallpaper
+GenericName=Wallpaper Manager
+Comment=Set wallpaper and regenerate system theme
+Exec=kitty --class yazi --title "Wallpaper Picker" -e yazi %u
+Icon=preferences-desktop-wallpaper
+Terminal=false
+Keywords=wallpaper;theme;colors;background;wallust;aesthetic;retheme;
+Categories=Settings;DesktopSettings;
