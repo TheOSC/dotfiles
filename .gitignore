@@ -1,0 +1,17 @@
+# Generated theme files (written by wallust at runtime)
+hyprland/.config/hypr/colors.conf
+waybar/.config/waybar/colors.css
+kitty/.config/kitty/theme.conf
+dunst/.config/dunst/colors
+fuzzel/.config/fuzzel/colors.ini
+yazi/.config/yazi/theme-colors.toml
+btop/.config/btop/themes/wallust.theme
+gtk/.config/gtk-3.0/colors.css
+gtk/.config/gtk-4.0/colors.css
+hyprlock/.config/hypr/hyprlock-colors.conf
+
+# Wallpapers (too large, personal)
+wallpapers/
+
+# OS noise
+.DS_Store
