@@ -304,6 +304,8 @@ AUR_PACKAGES=(
     # Screenshot annotation
     satty
 
+    #hyprdynamicmonitors-bin
+
     # Firefox theming
     pywalfox
 
@@ -368,6 +370,7 @@ STOW_PACKAGES=(
     syshelp
     starship
     greetd
+    monitors
 )
 
 info "Creating required directories..."

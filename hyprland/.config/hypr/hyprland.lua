@@ -85,9 +85,12 @@ hl.config({
 
 -- =============================================================================
 -- MONITOR
--- Auto-detect. Override here if you have specific resolution/scaling needs.
--- Example: hl.monitor({ name = "eDP-1", resolution = "1920x1080", scale = 1 })
+-- Managed by hyprdynamicmonitors
+-- Configure with: hyprdynamicmonitors tui
+-- Profiles saved to ~/.config/hypr/monitors.conf
 -- =============================================================================
+
+-- Fallback for unknown displays
 hl.monitor({ name = "", resolution = "preferred", position = "auto", scale = 1 })
 
 -- =============================================================================

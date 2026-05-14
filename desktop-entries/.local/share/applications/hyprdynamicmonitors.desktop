@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Monitor Manager
+GenericName=Display Manager
+Comment=Configure and manage monitor layouts and profiles
+Exec=kitty --class hyprdynamicmonitors --title "Monitor Manager" -e hyprdynamicmonitors tui
+Icon=display
+Terminal=false
+Keywords=monitor;display;screen;resolution;dock;docking;hdmi;displayport;external;layout;
+Categories=System;Settings;

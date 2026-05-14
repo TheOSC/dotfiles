@@ -21,6 +21,9 @@ hl.on("hyprland.start", function()
     -- Idle daemon (triggers hyprlock on inactivity)
     hl.exec_cmd("hypridle")
 
+    -- Monitor management daemon
+    hl.exec_cmd("hyprdynamicmonitors run")
+
     -- Pipewire (should be started by systemd user service,
     -- but belt-and-suspenders here)
     hl.exec_cmd("uwsm app -- pipewire")

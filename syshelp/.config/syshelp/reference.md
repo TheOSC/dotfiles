@@ -103,6 +103,7 @@ Theme surfaces updated automatically:
 | cliphist | Clipboard history | Super+V to browse |
 | grimblast | Screenshot capture | Use via Print keybind |
 | satty | Screenshot annotation | Opens automatically after region capture |
+| hyprdynamicmonitors | Monitor/display profile manager — dock detection, auto switching | hyprdynamicmonitors tui |
 | awww | Wallpaper daemon | Managed by wallpaper-set |
 | wallust | Theme color engine | Managed by wallpaper-set |
 | hypridle | Idle detection → auto lock | Runs in background |
