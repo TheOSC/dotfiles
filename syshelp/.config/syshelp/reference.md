@@ -107,7 +107,7 @@ Theme surfaces updated automatically:
 | wallust | Theme color engine | Managed by wallpaper-set |
 | hypridle | Idle detection → auto lock | Runs in background |
 | hyprlock | Lock screen | Super+L or auto on idle |
-
+| thunar | GUI file manager — drag-and-drop, USB/flash mounting | thunar |
 ---
 
 ## Git Basics

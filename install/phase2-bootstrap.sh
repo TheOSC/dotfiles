@@ -218,6 +218,10 @@ PACMAN_PACKAGES=(
     unar
     jq
     poppler
+    thunar
+    thunar-volman
+    gvfs
+    gvfs-mtp        # Android/MTP device support
 
     # Fonts
     ttf-jetbrains-mono-nerd
