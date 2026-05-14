@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# =============================================================================
+# syshelp
+# Searchable system reference — hit Super+F1 or type 'syshelp' anywhere
+# Reads from ~/.config/syshelp/reference.md
+# =============================================================================
+
+REFERENCE="$HOME/.config/syshelp/reference.md"
+
+if [[ ! -f "$REFERENCE" ]]; then
+    echo "Reference file not found: $REFERENCE"
+    exit 1
+fi
+
+# Use gum to render a searchable, scrollable reference
+gum pager < "$REFERENCE"

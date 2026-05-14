@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# =============================================================================
+# wallpaper-set
+# Master theme trigger — the ONLY way wallpaper should ever be changed
+# Usage: wallpaper-set <path/to/image>
+# =============================================================================
+
+set -euo pipefail
+
+# =============================================================================
+# VALIDATION
+# =============================================================================
+
+if [[ $# -eq 0 ]]; then
+    echo "Usage: wallpaper-set <path/to/image>"
+    exit 1
+fi
+
+IMAGE="$(realpath "$1")"
+
+if [[ ! -f "$IMAGE" ]]; then
+    echo "Error: File not found: $IMAGE"
+    exit 1
+fi
+
+# Verify it's an image format awww supports
+EXT="${IMAGE##*.}"
+case "${EXT,,}" in
+    jpg|jpeg|png|gif|webp|bmp|tiff|svg)
+        ;;
+    *)
+        echo "Error: Unsupported image format: $EXT"
+        echo "Supported: jpg, jpeg, png, gif, webp, bmp, tiff, svg"
+        exit 1
+        ;;
+esac
+
+echo "Setting wallpaper: $IMAGE"
+
+# =============================================================================
+# STEP 1 — SET WALLPAPER
+# awww transitions smoothly to the new image
+# =============================================================================
+
+echo "[1/3] Setting wallpaper..."
+
+# Start awww daemon if not running
+if ! pgrep -x awww-daemon > /dev/null; then
+    awww-daemon &
+    sleep 0.5
+fi
+
+awww img "$IMAGE" \
+    --transition-type fade \
+    --transition-duration 1.5 \
+    --transition-fps 60
+
+echo "      Done"
+
+# =============================================================================
+# STEP 2 — GENERATE THEME
+# wallust extracts colors and renders all templates
+# =============================================================================
+
+echo "[2/3] Generating theme from wallpaper..."
+
+wallust run "$IMAGE"
+
+echo "      Done"
+
+# =============================================================================
+# STEP 3 — RELOAD ALL THEME CONSUMERS
+# =============================================================================
+
+echo "[3/3] Reloading theme consumers..."
+
+# Hyprland — reload config (picks up new colors.lua)
+if pgrep -x Hyprland > /dev/null; then
+    hyprctl reload
+    echo "      Hyprland reloaded"
+fi
+
+# Waybar — SIGUSR2 triggers CSS reload without restart
+if pgrep -x waybar > /dev/null; then
+    pkill -SIGUSR2 waybar
+    echo "      Waybar reloaded"
+fi
+
+# Dunst — restart with new colors
+if pgrep -x dunst > /dev/null; then
+    pkill dunst
+    sleep 0.2
+    dunst &
+    disown
+    echo "      Dunst restarted"
+fi
+
+# Kitty — reload all running instances
+if pgrep -x kitty > /dev/null; then
+    kill -SIGUSR1 $(pgrep -x kitty)
+    echo "      Kitty reloaded"
+fi
+
+# GTK apps pick up color changes on next launch automatically
+# No reload needed for running GTK apps
+
+# Firefox — pywalfox update
+if pgrep -x firefox > /dev/null; then
+    pywalfox update
+    echo "      Firefox theme updated"
+fi
+
+# Save current wallpaper path for restoration on next boot
+mkdir -p ~/.cache/wallust
+echo "$IMAGE" > ~/.cache/wallust/current-wallpaper
+echo "      Wallpaper path saved"
+
+echo ""
+echo "Theme updated successfully."
+echo "Wallpaper: $IMAGE"

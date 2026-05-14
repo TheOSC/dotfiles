@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# =============================================================================
+# screenshot
+# Wrapper around grimblast + satty
+# Usage: screenshot region   — select region, open in satty for annotation
+#        screenshot screen   — capture full screen, save directly
+#        screenshot window   — capture active window, open in satty
+# =============================================================================
+
+set -euo pipefail
+
+MODE="${1:-region}"
+SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
+mkdir -p "$SCREENSHOT_DIR"
+TIMESTAMP="$(date +%Y%m%d_%H%M%S)"
+
+case "$MODE" in
+    region)
+        # Region select → pipe to satty for annotation
+        # satty handles saving/copying from its own UI
+        grimblast save area - | satty --filename -
+        ;;
+    screen)
+        # Full screen → save directly, no annotation
+        OUTPUT="$SCREENSHOT_DIR/screenshot_${TIMESTAMP}.png"
+        grimblast save screen "$OUTPUT"
+        # Copy to clipboard as well
+        wl-copy < "$OUTPUT"
+        echo "Saved: $OUTPUT"
+        ;;
+    window)
+        # Active window → pipe to satty
+        grimblast save active - | satty --filename -
+        ;;
+    *)
+        echo "Usage: screenshot [region|screen|window]"
+        exit 1
+        ;;
+esac

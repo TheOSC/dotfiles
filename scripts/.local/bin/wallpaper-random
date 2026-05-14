@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# =============================================================================
+# wallpaper-random
+# Pick a random wallpaper from ~/wallpapers/ and run wallpaper-set
+# Usage: wallpaper-random
+# =============================================================================
+
+set -euo pipefail
+
+WALLPAPER_DIR="$HOME/wallpapers"
+
+if [[ ! -d "$WALLPAPER_DIR" ]]; then
+    echo "Error: Wallpaper directory not found: $WALLPAPER_DIR"
+    echo "Create it and add some images: mkdir -p ~/wallpapers"
+    exit 1
+fi
+
+# Find all supported image files recursively
+mapfile -t WALLPAPERS < <(find "$WALLPAPER_DIR" -type f \
+    \( -iname "*.jpg" -o -iname "*.jpeg" \
+    -o -iname "*.png" -o -iname "*.gif" \
+    -o -iname "*.webp" -o -iname "*.bmp" \) \
+    | sort)
+
+if [[ ${#WALLPAPERS[@]} -eq 0 ]]; then
+    echo "Error: No images found in $WALLPAPER_DIR"
+    exit 1
+fi
+
+# Pick randomly, avoiding the current wallpaper if possible
+CURRENT=""
+if [[ -f ~/.cache/wallust/current-wallpaper ]]; then
+    CURRENT="$(cat ~/.cache/wallust/current-wallpaper)"
+fi
+
+# Filter out current wallpaper from candidates if more than one exists
+if [[ ${#WALLPAPERS[@]} -gt 1 && -n "$CURRENT" ]]; then
+    mapfile -t WALLPAPERS < <(printf '%s\n' "${WALLPAPERS[@]}" \
+        | grep -v "^${CURRENT}$")
+fi
+
+# Select random
+SELECTED="${WALLPAPERS[$RANDOM % ${#WALLPAPERS[@]}]}"
+
+echo "Selected: $SELECTED"
+wallpaper-set "$SELECTED"

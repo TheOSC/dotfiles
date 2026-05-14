@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# =============================================================================
+# hypr-reload
+# Reload all theme consumers without changing wallpaper
+# Useful after manual config edits
+# Usage: hypr-reload
+# =============================================================================
+
+set -euo pipefail
+
+echo "Reloading all theme consumers..."
+
+if pgrep -x Hyprland > /dev/null; then
+    hyprctl reload
+    echo "  Hyprland reloaded"
+else
+    echo "  Hyprland not running, skipping"
+fi
+
+if pgrep -x waybar > /dev/null; then
+    pkill -SIGUSR2 waybar
+    echo "  Waybar reloaded"
+else
+    echo "  Waybar not running, skipping"
+fi
+
+if pgrep -x dunst > /dev/null; then
+    pkill dunst
+    sleep 0.2
+    dunst &
+    disown
+    echo "  Dunst restarted"
+else
+    echo "  Dunst not running, skipping"
+fi
+
+if pgrep -x kitty > /dev/null; then
+    kill -SIGUSR1 $(pgrep -x kitty)
+    echo "  Kitty reloaded"
+else
+    echo "  Kitty not running, skipping"
+fi
+
+echo "Done."
