@@ -164,6 +164,7 @@ PACMAN_PACKAGES=(
 
     # Display manager
     greetd
+    greetd-tuigreet
 
     # Bar
     waybar
@@ -293,9 +294,6 @@ AUR_PACKAGES=(
 
     # Theme engine
     wallust
-
-    # Display manager frontend
-    tuigreet
 
     # Bluetooth TUI
     bluetui
