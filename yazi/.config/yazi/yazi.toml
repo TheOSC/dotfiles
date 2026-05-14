@@ -2,7 +2,6 @@
 # yazi.toml
 # File manager configuration
 # =============================================================================
-
 [manager]
 ratio          = [1, 2, 4]    # Panel width ratios: parent, current, preview
 sort_by        = "natural"
@@ -12,7 +11,6 @@ sort_dir_first = true
 show_hidden    = false
 show_symlink   = true
 linemode       = "size"       # Show file sizes
-
 [preview]
 tab_size       = 2
 max_width      = 1200
@@ -21,11 +19,9 @@ cache_dir      = ""
 image_delay    = 30
 image_filter   = "triangle"
 image_quality  = 85
-
 # Use kitty graphics protocol for image previews
 ueberzug_scale  = 1
 ueberzug_offset = [0, 0, 0, 0]
-
 [opener]
 edit = [
     { run = 'nvim "$@"', desc = "nvim", block = true },
@@ -43,7 +39,7 @@ extract = [
     { run = 'unar "$1"', desc = "Extract here", block = true },
 ]
 smart_open = [
-    { run = 'bash -c "if [[ \"$PWD\" == *wallpapers* ]]; then ~/.local/bin/wallpaper-set \"$1\"; else xdg-open \"$1\"; fi" -- "$1"', desc = "Open", block = true },
+    { run = 'bash -c "export PATH=\"$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH\"; if [[ \"$PWD\" == *wallpapers* ]]; then \"$HOME/.local/bin/wallpaper-set\" \"$1\"; else xdg-open \"$1\"; fi" -- "$1"', desc = "Open", orphan = true },
 ]
 [open]
 rules = [
@@ -52,14 +48,11 @@ rules = [
     { mime = "application/json",    use = "edit" },
     { mime = "application/xml",     use = "edit" },
     { mime = "application/x-sh",    use = "edit" },
-
     # Media → mpv
     { mime = "video/*",             use = "play" },
     { mime = "audio/*",             use = "play" },
-
     # Images → default viewer
     { mime = "image/*",             use = "smart_open" },
-
     # Archives → extract
     { mime = "application/zip",          use = "extract" },
     { mime = "application/x-tar",        use = "extract" },
@@ -67,11 +60,9 @@ rules = [
     { mime = "application/x-7z-compressed", use = "extract" },
     { mime = "application/x-rar",        use = "extract" },
     { mime = "application/zstd",         use = "extract" },
-
     # Everything else → xdg-open
     { mime = "*",                   use = "open" },
 ]
-
 [tasks]
 micro_workers    = 5
 macro_workers    = 10
@@ -79,6 +70,5 @@ bizarre_retry    = 5
 image_alloc      = 536870912   # 512MB
 image_bound      = [0, 0]
 suppress_preload = false
-
 [log]
 enabled = false
