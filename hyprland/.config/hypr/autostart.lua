@@ -12,6 +12,9 @@ hl.on("hyprland.start", function()
     -- Restore last wallpaper (awww remembers last set)
     hl.exec_cmd("awww restore")
 
+-- Status bar
+    hl.exec_cmd("waybar")
+
     -- Notification daemon
     hl.exec_cmd("dunst")
 
