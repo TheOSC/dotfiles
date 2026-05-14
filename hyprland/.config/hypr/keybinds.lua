@@ -1,7 +1,6 @@
 -- keybinds.lua
 -- Hyprland 0.55 keybindings
 local M = "SUPER"
-
 -- Applications
 hl.bind(M .. " + Return",    hl.dsp.exec_cmd("kitty"))
 hl.bind(M .. " + B",         hl.dsp.exec_cmd("firefox"))
@@ -12,7 +11,6 @@ hl.bind(M .. " + SHIFT + M", hl.dsp.exec_cmd("kitty --class pulsemixer --title '
 hl.bind(M .. " + SHIFT + B", hl.dsp.exec_cmd("kitty --class bluetui --title 'Bluetooth' -e bluetui"))
 hl.bind(M .. " + M",         hl.dsp.exec_cmd("kitty --class jellycli --title 'Jellyfin' -e jellycli"))
 hl.bind(M .. " + F1",        hl.dsp.exec_cmd("kitty --class syshelp --title 'System Reference' -e syshelp"))
-
 -- Workspace 0 — remote work
 hl.bind(M .. " + 0", function()
     local rdm_running = os.execute("pgrep -x RemoteDesktopMana > /dev/null 2>&1") == 0
@@ -22,41 +20,43 @@ hl.bind(M .. " + 0", function()
     hl.dispatch(hl.dsp.focus({ workspace = "0" }))
 end)
 hl.bind(M .. " + SHIFT + 0", hl.dsp.window.move({ workspace = "0" }))
-
 -- Window management
 hl.bind(M .. " + Q",         hl.dsp.window.close())
 hl.bind(M .. " + F",         hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(M .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(M .. " + Tab",       hl.dsp.window.float({ action = "toggle" }))
 hl.bind(M .. " + slash",     hl.dsp.layout("togglesplit"))
-
 -- Focus
 hl.bind(M .. " + left",  hl.dsp.focus({ direction = "l" }))
 hl.bind(M .. " + right", hl.dsp.focus({ direction = "r" }))
 hl.bind(M .. " + up",    hl.dsp.focus({ direction = "u" }))
 hl.bind(M .. " + down",  hl.dsp.focus({ direction = "d" }))
-
--- Move windows
+-- Move windows — arrows
 hl.bind(M .. " + SHIFT + left",  hl.dsp.window.move({ direction = "l" }))
 hl.bind(M .. " + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
 hl.bind(M .. " + SHIFT + up",    hl.dsp.window.move({ direction = "u" }))
 hl.bind(M .. " + SHIFT + down",  hl.dsp.window.move({ direction = "d" }))
-
+-- Move windows — WASD
+hl.bind(M .. " + A", hl.dsp.window.move({ direction = "l" }))
+hl.bind(M .. " + D", hl.dsp.window.move({ direction = "r" }))
+hl.bind(M .. " + W", hl.dsp.window.move({ direction = "u" }))
+hl.bind(M .. " + S", hl.dsp.window.move({ direction = "d" }))
+-- Move windows — HJKL
+hl.bind(M .. " + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(M .. " + J", hl.dsp.window.move({ direction = "d" }))
+hl.bind(M .. " + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind(M .. " + L", hl.dsp.window.move({ direction = "r" }))
 -- Mouse resize
 hl.bind(M .. " + ALT + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
 -- Workspaces 1-9
 for i = 1, 9 do
     hl.bind(M .. " + " .. tostring(i),         hl.dsp.focus({ workspace = tostring(i) }))
     hl.bind(M .. " + SHIFT + " .. tostring(i), hl.dsp.window.move({ workspace = tostring(i) }))
 end
-
 -- System
-hl.bind(M .. " + L",         hl.dsp.exec_cmd("hyprlock"))
+hl.bind(M .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(M .. " + SHIFT + R", function() hl.dispatch(hl.dsp.reload()) end)
-hl.bind(M .. " + W",         hl.dsp.exec_cmd("kitty --class yazi --title 'Wallpaper Picker' -e yazi ~/wallpapers"))
 hl.bind(M .. " + V",         hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
-
 -- Screenshots
 hl.bind("Print",          hl.dsp.exec_cmd("grimblast save area - | satty --filename -"))
 hl.bind(M .. " + Print",  hl.dsp.exec_cmd("grimblast save screen ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png"))
