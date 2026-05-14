@@ -4,32 +4,32 @@
 # =============================================================================
 
 [manager]
-cwd = { fg = "#E25918" }
+cwd = { fg = "#E25A18" }
 
-hovered         = { fg = "#02040A", bg = "#E25918" }
+hovered         = { fg = "#02040A", bg = "#E25A18" }
 preview_hovered = { underline = true }
 
 find_keyword  = { fg = "#D55321", bold = true }
 find_position = { fg = "#EF5C0E", bg = "reset", bold = true }
 
-marker_copied  = { fg = "#C7452B", bg = "#C7452B" }
-marker_cut     = { fg = "#3448CE", bg = "#3448CE" }
+marker_copied  = { fg = "#C7462B", bg = "#C7462B" }
+marker_cut     = { fg = "#3447CE", bg = "#3447CE" }
 marker_marked  = { fg = "#EF5C0E", bg = "#EF5C0E" }
-marker_selected = { fg = "#E25918", bg = "#E25918" }
+marker_selected = { fg = "#E25A18", bg = "#E25A18" }
 
 [status]
 separator_open  = ""
 separator_close = ""
 
 [input]
-border   = { fg = "#E25918" }
-title    = { fg = "#E25918" }
+border   = { fg = "#E25A18" }
+title    = { fg = "#E25A18" }
 value    = { fg = "#FFA660" }
 selected = { reversed = true }
 
 [select]
-border   = { fg = "#E25918" }
-active   = { fg = "#E25918" }
+border   = { fg = "#E25A18" }
+active   = { fg = "#E25A18" }
 inactive = { fg = "#CF5A18" }
 
 [which]
@@ -41,9 +41,9 @@ separator       = "  "
 separator_style = { fg = "#CF5A18" }
 
 [notify]
-title_info  = { fg = "#C7452B" }
+title_info  = { fg = "#C7462B" }
 title_warn  = { fg = "#D55321" }
-title_error = { fg = "#3448CE" }
+title_error = { fg = "#3447CE" }
 
 [icon]
 rules = []

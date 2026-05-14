@@ -8,9 +8,9 @@
     monitor              = 0
     follow               = mouse
     width               = 320
-    height              = 120
+    height              = (0, 120)
     origin              = top-right
-    offset              = 12x48
+    offset              = (12, 48)
     scale               = 0
     notification_limit  = 5
     padding             = 10
