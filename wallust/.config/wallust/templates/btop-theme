@@ -1,0 +1,43 @@
+# =============================================================================
+# btop-theme (wallust generated)
+# Do not edit manually
+# =============================================================================
+
+theme_background = True
+
+# Main colors
+main_bg         = "{{background}}"
+main_fg         = "{{foreground}}"
+title_fg        = "{{color4}}"
+hi_fg           = "{{color4}}"
+selected_bg     = "{{color4}}"
+selected_fg     = "{{background}}"
+inactive_fg     = "{{color8}}"
+
+# Graph colors
+proc_misc       = "{{color5}}"
+cpu_box         = "{{color4}}"
+mem_box         = "{{color2}}"
+net_box         = "{{color6}}"
+proc_box        = "{{color4}}"
+div_line        = "{{color8}}"
+
+# Temperature gradient
+temp_start      = "{{color2}}"
+temp_mid        = "{{color3}}"
+temp_end        = "{{color1}}"
+
+# CPU graph gradient
+cpu_start       = "{{color4}}"
+cpu_mid         = "{{color6}}"
+cpu_end         = "{{color5}}"
+
+# Memory graph
+mem_start       = "{{color2}}"
+mem_mid         = "{{color6}}"
+mem_end         = "{{color4}}"
+
+# Network graph
+net_start       = "{{color4}}"
+net_mid         = "{{color6}}"
+net_end         = "{{color2}}"
