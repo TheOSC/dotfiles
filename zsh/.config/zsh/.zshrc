@@ -36,7 +36,7 @@ setopt PUSHD_SILENT           # Don't print stack on pushd/popd
 setopt ALWAYS_TO_END          # Move cursor to end after completion
 setopt AUTO_MENU              # Show completion menu on tab
 setopt COMPLETE_IN_WORD       # Complete from both ends of word
-setopt CORRECT                # Suggest corrections for mistyped commands
+#setopt CORRECT                # Suggest corrections for mistyped commands
 
 # Misc
 setopt INTERACTIVE_COMMENTS   # Allow comments in interactive shell
@@ -85,8 +85,7 @@ export LESS="-R --mouse"
 export MANPAGER="nvim +Man!"           # Open man pages in nvim
 
 # Path — add user bins
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$XDG_DATA_HOME/../bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
 
 # Terminal colors from wallust
 # Sources the generated sequences on shell start
