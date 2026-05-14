@@ -1,0 +1,101 @@
+# =============================================================================
+# starship.toml
+# Minimal prompt — shows what matters, nothing else
+# =============================================================================
+
+# Don't add a blank line before the prompt
+add_newline = false
+
+# Prompt format — left side
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$cmd_duration\
+$line_break\
+$character"""
+
+# =============================================================================
+# DIRECTORY
+# =============================================================================
+[directory]
+style = "bold blue"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " 󰌾"
+read_only_style = "red"
+
+# =============================================================================
+# GIT
+# =============================================================================
+[git_branch]
+format = "on [$symbol$branch]($style) "
+symbol = " "
+style = "bold purple"
+truncation_length = 20
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold red"
+conflicted = "󰩌"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?"
+stashed = "󰏗"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+# =============================================================================
+# LANGUAGES — only show when relevant
+# =============================================================================
+[python]
+format = "via [󰌠 $version]($style) "
+style = "bold yellow"
+detect_files = ["requirements.txt", "pyproject.toml", ".python-version"]
+
+[nodejs]
+format = "via [ $version]($style) "
+style = "bold green"
+detect_files = ["package.json"]
+
+[rust]
+format = "via [󱘗 $version]($style) "
+style = "bold red"
+detect_files = ["Cargo.toml"]
+
+# =============================================================================
+# COMMAND DURATION — show if command took more than 2s
+# =============================================================================
+[cmd_duration]
+min_time = 2000
+format = "took [$duration]($style) "
+style = "bold yellow"
+
+# =============================================================================
+# PROMPT CHARACTER
+# =============================================================================
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold blue)"
+
+# =============================================================================
+# MODULES TO DISABLE
+# =============================================================================
+[package]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[azure]
+disabled = true
