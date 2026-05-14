@@ -1,0 +1,18 @@
+# =============================================================================
+# uwsm/env-hyprland
+# Environment variables specific to Hyprland sessions
+# Format: export KEY=VALUE
+# =============================================================================
+
+# Hyprland specific
+export HYPRLAND_LOG_WLR=0
+export HYPRLAND_NO_RT=0
+
+# Aquamarine rendering backend
+# Uncomment and set if you have multiple GPUs
+# export AQ_DRM_DEVICES=/dev/dri/card0
+
+# Nvidia specific — uncomment if on Nvidia GPU
+# export LIBVA_DRIVER_NAME=nvidia
+# export __GLX_VENDOR_LIBRARY_NAME=nvidia
+# export NVD_BACKEND=direct

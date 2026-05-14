@@ -42,11 +42,11 @@ kitty.target   = "~/.config/kitty/theme.conf"
 
 # Dunst notification colors
 dunst.template = "templates/dunstrc-colors"
-dunst.target   = "~/.config/dunst/colors"
+dunst.target   = "~/.config/dunst/dunstrc"
 
 # Fuzzel launcher colors
 fuzzel.template = "templates/fuzzel-colors.ini"
-fuzzel.target   = "~/.config/fuzzel/colors.ini"
+fuzzel.target   = "~/.config/fuzzel/fuzzel.ini"
 
 # Yazi file manager theme
 yazi.template = "templates/yazi-theme.toml"

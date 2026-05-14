@@ -366,6 +366,8 @@ STOW_PACKAGES=(
     scripts
     desktop-entries
     syshelp
+    starship
+    greetd
 )
 
 info "Creating required directories..."
@@ -373,6 +375,7 @@ mkdir -p ~/.config
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/applications
 mkdir -p ~/wallpapers
+mkdir -p ~/Pictures/Screenshots
 
 info "Stowing dotfile packages..."
 for pkg in "${STOW_PACKAGES[@]}"; do
