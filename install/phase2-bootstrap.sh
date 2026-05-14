@@ -319,6 +319,9 @@ AUR_PACKAGES=(
 
     # Grimblast (Hyprland screenshot helper)
     grimblast-git
+
+    #Universal Wayland Session Manager
+    uwsm
 )
 
 info "Installing AUR packages..."
