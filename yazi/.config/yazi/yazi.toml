@@ -43,9 +43,8 @@ extract = [
     { run = 'unar "$1"', desc = "Extract here", block = true },
 ]
 smart_open = [
-    { run = 'yazi-open "$@"', desc = "Open", orphan = true },
+    { run = 'bash -c "if [[ \"$PWD\" == *wallpapers* ]]; then ~/.local/bin/wallpaper-set \"$1\"; else xdg-open \"$1\"; fi" -- "$1"', desc = "Open", block = true },
 ]
-
 [open]
 rules = [
     # Text/code → nvim

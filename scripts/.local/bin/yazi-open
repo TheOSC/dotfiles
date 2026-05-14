@@ -4,3 +4,4 @@ if [[ "$PWD" == *wallpapers* ]]; then
 else
     xdg-open "$1"
 fi
+
