@@ -228,6 +228,7 @@ PACMAN_PACKAGES=(
     ttf-nerd-fonts-symbols
     noto-fonts
     noto-fonts-emoji
+    papirus-icon-theme
 
     # GTK theming
     gtk3
