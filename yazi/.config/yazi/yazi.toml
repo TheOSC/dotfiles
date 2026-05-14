@@ -42,6 +42,9 @@ play = [
 extract = [
     { run = 'unar "$1"', desc = "Extract here", block = true },
 ]
+smart_open = [
+    { run = 'yazi-open "$@"', desc = "Open", orphan = true },
+]
 
 [open]
 rules = [
