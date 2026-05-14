@@ -215,7 +215,6 @@ PACMAN_PACKAGES=(
     # Files
     yazi
     ffmpegthumbnailer
-    unar
     jq
     poppler
     thunar
@@ -304,7 +303,11 @@ AUR_PACKAGES=(
     # Screenshot annotation
     satty
 
-    #hyprdynamicmonitors-bin
+    #Hyperdynamicmonitors-bin
+    hyprdynamicmonitors-bin
+
+    #unar
+    unar
 
     # Firefox theming
     pywalfox
