@@ -69,7 +69,7 @@ keymap = [
 
 [input]
 keymap = [
-    { on = "<Enter>",   run = "submit",  desc = "Submit" },
+    { on = "<S-Enter>", run = "submit",  desc = "Submit" },
     { on = "<Esc>",     run = "escape",  desc = "Cancel" },
     { on = "<C-c>",     run = "close",   desc = "Close" },
     { on = "<Left>",    run = "move -1", desc = "Left" },
