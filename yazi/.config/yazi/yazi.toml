@@ -56,7 +56,7 @@ rules = [
     { mime = "audio/*",             use = "play" },
 
     # Images → default viewer
-    { mime = "image/*",             use = "open" },
+    { mime = "image/*",             use = "smart_open" },
 
     # Archives → extract
     { mime = "application/zip",          use = "extract" },
