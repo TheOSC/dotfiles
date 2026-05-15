@@ -333,6 +333,7 @@ for pkg in "${AUR_PACKAGES[@]}"; do
 done
 success "AUR packages complete"
 warn "NOTE: Run jellyfin-tui manually on first boot to configure your Jellyfin server and credentials"
+warn "NOTE: WireGuard VPN - import conf from UDM SE via: sudo nmcli connection import type wireguard file wg0.conf"
 
 # =============================================================================
 # ZSH AS DEFAULT SHELL
