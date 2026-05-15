@@ -57,6 +57,9 @@ end
 hl.bind(M .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(M .. " + SHIFT + R", function() hl.dispatch(hl.dsp.reload()) end)
 hl.bind(M .. " + V",         hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
+-- Network
+hl.bind(M .. " + n",          hl.dsp.exec_cmd("kitty --class nmtui --title 'Network' -e nmtui"))
+
 -- Screenshots
-hl.bind("Print",          hl.dsp.exec_cmd("grimblast save area - | satty --filename -"))
+hl.bind("Print",          hl.dsp.exec_cmd("grimblast --freeze save area - | satty --filename -"))
 hl.bind(M .. " + Print",  hl.dsp.exec_cmd("grimblast save screen ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png"))
