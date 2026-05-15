@@ -3,7 +3,7 @@
 local M = "SUPER"
 -- Applications
 hl.bind(M .. " + Return",    hl.dsp.exec_cmd("kitty"))
-hl.bind(M .. " + B",         hl.dsp.exec_cmd("firefox"))
+hl.bind(M .. " + B",         hl.dsp.exec_cmd("firefox-launch"))
 hl.bind(M .. " + Space",     hl.dsp.exec_cmd("fuzzel"))
 hl.bind(M .. " + E",         hl.dsp.exec_cmd("kitty --class yazi --title 'File Manager' -e yazi"))
 hl.bind(M .. " + SHIFT + T", hl.dsp.exec_cmd("kitty --class btop --title 'System Monitor' -e btop"))

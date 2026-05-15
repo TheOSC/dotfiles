@@ -1,0 +1,7 @@
+#!/bin/bash
+# Clear stale Firefox lock files before launch
+PROFILE_DIR=$(find ~/.mozilla/firefox -maxdepth 1 -name "*.default-release" 2>/dev/null | head -1)
+if [ -n "$PROFILE_DIR" ]; then
+    rm -f "$PROFILE_DIR/lock" "$PROFILE_DIR/.parentlock"
+fi
+exec firefox "$@"
