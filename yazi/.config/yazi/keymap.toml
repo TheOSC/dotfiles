@@ -70,15 +70,19 @@ keymap = [
 
 [input]
 keymap = [
-    { on = "<Enter>",   run = "submit",  desc = "Submit" },
-    { on = "<Esc>",     run = "escape",  desc = "Cancel" },
-    { on = "<C-c>",     run = "close",   desc = "Close" },
-    { on = "<Left>",    run = "move -1", desc = "Left" },
-    { on = "<Right>",   run = "move 1",  desc = "Right" },
-    { on = "<Home>",    run = "move -999", desc = "Start" },
-    { on = "<End>",     run = "move 999",  desc = "End" },
-    { on = "<Backspace>", run = "backspace", desc = "Backspace" },
-    { on = "<Delete>",  run = "delete",  desc = "Delete" },
+    { on = "<Enter>",   run = "submit",             desc = "Submit" },
+    { on = "<Esc>",     run = "escape",             desc = "Back to normal / cancel" },
+    { on = "<C-c>",     run = "close",              desc = "Close" },
+    # Insert mode
+    { on = "i",         run = "insert",             desc = "Enter insert mode" },
+    { on = "a",         run = "insert --append",    desc = "Enter append mode" },
+    # Movement
+    { on = "<Left>",    run = "move -1",            desc = "Left" },
+    { on = "<Right>",   run = "move 1",             desc = "Right" },
+    { on = "<Home>",    run = "move -999",          desc = "Start" },
+    { on = "<End>",     run = "move 999",           desc = "End" },
+    { on = "<Backspace>", run = "backspace",        desc = "Backspace" },
+    { on = "<Delete>",  run = "delete",             desc = "Delete" },
 ]
 
 [select]
