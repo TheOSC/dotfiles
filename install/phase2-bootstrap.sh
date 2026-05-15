@@ -319,7 +319,7 @@ AUR_PACKAGES=(
     jellyfin-mpv-shim
 
     # Remote desktop
-    rdm-solo
+    remote-desktop-manager
 
     # Grimblast (Hyprland screenshot helper)
     grimblast-git
@@ -388,6 +388,29 @@ mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/applications
 mkdir -p ~/Pictures/wallpapers
 mkdir -p ~/Pictures/Screenshots
+
+info "Pre-stow cleanup — removing real files that would conflict with symlinks..."
+# Common dirs that get created by apps before stow can symlink them
+CLEANUP_PATHS=(
+    "$HOME/.config/hypr"
+    "$HOME/.config/kitty"
+    "$HOME/.config/waybar"
+    "$HOME/.config/fuzzel"
+    "$HOME/.config/dunst"
+    "$HOME/.config/yazi"
+    "$HOME/.config/btop"
+    "$HOME/.config/zsh"
+    "$HOME/.config/syshelp"
+    "$HOME/.config/vpn"
+    "$HOME/.config/qt5ct"
+    "$HOME/.config/qt6ct"
+)
+for path in "${CLEANUP_PATHS[@]}"; do
+    if [[ -e "$path" && ! -L "$path" ]]; then
+        rm -rf "$path"
+        info "Removed: $path"
+    fi
+done
 
 info "Stowing dotfile packages..."
 for pkg in "${STOW_PACKAGES[@]}"; do
@@ -460,18 +483,18 @@ info "After first boot open Firefox and install the Pywalfox extension from addo
 # =============================================================================
 # WALLUST INITIAL RUN
 # =============================================================================
+section "Neovim Plugin Sync"
+info "Syncing Neovim plugins headlessly..."
+nvim --headless "+Lazy sync" +qa 2>/dev/null && success "Neovim plugins synced" || warn "Neovim plugin sync failed — run :Lazy sync manually"
 
 section "Initial Theme Generation"
-
-# Check for a default wallpaper to seed the theme
-DEFAULT_WALLPAPER="${DOTFILES_DIR}/wallpapers/default.jpg"
-if [[ -f "$DEFAULT_WALLPAPER" ]]; then
-    info "Running initial wallust theme generation..."
-    wallust run "$DEFAULT_WALLPAPER"
+DEFAULT_WALLPAPER=$(ls "$HOME/Pictures/wallpapers/"*.{jpg,jpeg,png} 2>/dev/null | head -1)
+if [[ -n "$DEFAULT_WALLPAPER" ]]; then
+    info "Setting wallpaper and generating theme..."
+    wallpaper-set "$DEFAULT_WALLPAPER"
     success "Initial theme generated"
 else
-    warn "No default wallpaper found at ${DEFAULT_WALLPAPER}"
-    warn "Add a wallpaper to ~/Pictures/wallpapers/ and run: wallpaper-set ~/Pictures/wallpapers/yourimage.jpg"
+    warn "No wallpapers found in ~/Pictures/wallpapers/ — add one and run: wallpaper-set <image>"
 fi
 
 # =============================================================================
