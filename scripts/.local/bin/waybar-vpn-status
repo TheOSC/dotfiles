@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if ip link show wg0 2>/dev/null | grep -q 'LOWER_UP'; then
+    echo '{"text": "󰒃 VPN", "class": "connected"}'
+else
+    echo '{"text": "󰒄 VPN", "class": "disconnected"}'
+fi

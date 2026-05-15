@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/vpn/vpn.env"
+source "$CONFIG"
+
+if ip link show wg0 2>/dev/null | grep -q 'LOWER_UP'; then
+    nmcli connection down "$VPN_CONNECTION"
+else
+    nmcli connection up "$VPN_CONNECTION"
+fi

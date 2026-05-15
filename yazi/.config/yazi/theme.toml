@@ -4,46 +4,46 @@
 # =============================================================================
 
 [manager]
-cwd = { fg = "#475C0D" }
+cwd = { fg = "#197ECA" }
 
-hovered         = { fg = "#030501", bg = "#475C0D" }
+hovered         = { fg = "#030501", bg = "#197ECA" }
 preview_hovered = { underline = true }
 
-find_keyword  = { fg = "#3D490B", bold = true }
-find_position = { fg = "#475C0D", bg = "reset", bold = true }
+find_keyword  = { fg = "#C1961C", bold = true }
+find_position = { fg = "#C99E1A", bg = "reset", bold = true }
 
-marker_copied  = { fg = "#37390A", bg = "#37390A" }
-marker_cut     = { fg = "#35370A", bg = "#35370A" }
-marker_marked  = { fg = "#1A2AAA", bg = "#1A2AAA" }
-marker_selected = { fg = "#475C0D", bg = "#475C0D" }
+marker_copied  = { fg = "#1429B1", bg = "#1429B1" }
+marker_cut     = { fg = "#1929A6", bg = "#1929A6" }
+marker_marked  = { fg = "#5836DC", bg = "#5836DC" }
+marker_selected = { fg = "#197ECA", bg = "#197ECA" }
 
 [status]
 separator_open  = ""
 separator_close = ""
 
 [input]
-border   = { fg = "#475C0D" }
-title    = { fg = "#475C0D" }
-value    = { fg = "#A9B3FF" }
+border   = { fg = "#197ECA" }
+title    = { fg = "#197ECA" }
+value    = { fg = "#E4DBFF" }
 selected = { reversed = true }
 
 [select]
-border   = { fg = "#475C0D" }
-active   = { fg = "#475C0D" }
-inactive = { fg = "#5F68B1" }
+border   = { fg = "#197ECA" }
+active   = { fg = "#197ECA" }
+inactive = { fg = "#8F88AC" }
 
 [which]
-mask            = { bg = "#050702" }
-cand            = { fg = "#1A2AAA" }
-rest            = { fg = "#5F68B1" }
-desc            = { fg = "#475C0D" }
+mask            = { bg = "#040702" }
+cand            = { fg = "#5836DC" }
+rest            = { fg = "#8F88AC" }
+desc            = { fg = "#C99E1A" }
 separator       = "  "
-separator_style = { fg = "#5F68B1" }
+separator_style = { fg = "#8F88AC" }
 
 [notify]
-title_info  = { fg = "#37390A" }
-title_warn  = { fg = "#3D490B" }
-title_error = { fg = "#35370A" }
+title_info  = { fg = "#1429B1" }
+title_warn  = { fg = "#C1961C" }
+title_error = { fg = "#1929A6" }
 
 [icon]
 rules = []

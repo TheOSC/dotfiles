@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -uo pipefail
+INTERFACE="$1"
+EVENT="$2"
+[[ "$INTERFACE" == wg* ]] && exit 0
+[[ "$EVENT" != "up" ]] && exit 0
+CONFIG="/etc/vpn/vpn.env"
+[[ ! -f "$CONFIG" ]] && exit 0
+source "$CONFIG"
+sleep 2
+logger -t vpn-autoconnect "New network on $INTERFACE — bringing up $VPN_CONNECTION"
+nmcli connection up "$VPN_CONNECTION" 2>&1 | logger -t vpn-autoconnect

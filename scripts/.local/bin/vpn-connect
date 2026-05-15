@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/vpn/vpn.env"
+
+if [[ ! -f "$CONFIG" ]]; then
+  echo "ERROR: Missing config at $CONFIG"
+  exit 1
+fi
+
+source "$CONFIG"
+
+echo "Bringing up $VPN_CONNECTION..."
+nmcli connection down "$VPN_CONNECTION" 2>/dev/null || true
+nmcli connection up "$VPN_CONNECTION" && echo "VPN up." || echo "ERROR: Failed to bring up VPN."

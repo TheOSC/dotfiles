@@ -183,6 +183,14 @@ window#waybar.hidden {
     color: @text-dim;
 }
 
+#custom-vpn.connected {
+    color: @color2;
+}
+
+#custom-vpn.disconnected {
+    color: @color8;
+}
+
 /* =============================================================================
    TRAY
    ============================================================================= */
