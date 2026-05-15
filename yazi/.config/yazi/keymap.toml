@@ -30,6 +30,7 @@ keymap = [
     # File operations
     { on = "o",         run = "open",               desc = "Open" },
     { on = "<Enter>",   run = "open",               desc = "Open" },
+    { on = ["<S>", "<Enter>"], run = "open",        desc = "Set wallpaper" },
     { on = "O",         run = "open --interactive", desc = "Open with" },
     { on = "y",         run = "yank",               desc = "Yank (copy)" },
     { on = "x",         run = "yank --cut",         desc = "Yank (cut)" },
@@ -69,7 +70,7 @@ keymap = [
 
 [input]
 keymap = [
-    { on = "<S-Enter>", run = "submit",  desc = "Submit" },
+    { on = "<Enter>",   run = "submit",  desc = "Submit" },
     { on = "<Esc>",     run = "escape",  desc = "Cancel" },
     { on = "<C-c>",     run = "close",   desc = "Close" },
     { on = "<Left>",    run = "move -1", desc = "Left" },
