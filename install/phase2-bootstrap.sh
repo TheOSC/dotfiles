@@ -397,6 +397,7 @@ done
 
 # Make scripts executable
 chmod +x ~/.local/bin/*
+sudo ln -sf "$HOME/.local/bin/firefox-launch" /usr/local/bin/firefox-launch
 success "Scripts marked executable"
 
 # =============================================================================

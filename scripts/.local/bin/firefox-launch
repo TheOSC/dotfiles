@@ -4,4 +4,4 @@ PROFILE_DIR=$(find ~/.mozilla/firefox -maxdepth 1 -name "*.default-release" 2>/d
 if [ -n "$PROFILE_DIR" ]; then
     rm -f "$PROFILE_DIR/lock" "$PROFILE_DIR/.parentlock"
 fi
-exec firefox "$@"
+exec /usr/bin/firefox "$@"
