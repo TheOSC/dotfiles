@@ -314,7 +314,7 @@ AUR_PACKAGES=(
     pywalfox
 
     # Jellyfin
-    jellycli
+    jellyfin-tui
     jellyfin-mpv-shim
 
     # Remote desktop

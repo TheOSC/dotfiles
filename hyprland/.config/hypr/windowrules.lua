@@ -13,10 +13,10 @@ hl.window_rule({ match = { class = "pulsemixer" }, center = true })
 hl.window_rule({ match = { class = "bluetui" },    float = true })
 hl.window_rule({ match = { class = "bluetui" },    size = { 700, 450 } })
 hl.window_rule({ match = { class = "bluetui" },    center = true })
--- jellycli
-hl.window_rule({ match = { class = "jellycli" },   float = true })
-hl.window_rule({ match = { class = "jellycli" },   size = { 900, 550 } })
-hl.window_rule({ match = { class = "jellycli" },   center = true })
+-- jellyfin-tui
+hl.window_rule({ match = { class = "jellyfin-tui" },   float = true })
+hl.window_rule({ match = { class = "jellyfin-tui" },   size = { 900, 550 } })
+hl.window_rule({ match = { class = "jellyfin-tui" },   center = true })
 -- yazi
 hl.window_rule({ match = { class = "yazi" },       size = { 1200, 750 } })
 hl.window_rule({ match = { class = "yazi" },       center = true })

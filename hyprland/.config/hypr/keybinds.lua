@@ -9,7 +9,7 @@ hl.bind(M .. " + E",         hl.dsp.exec_cmd("kitty --class yazi --title 'File M
 hl.bind(M .. " + SHIFT + T", hl.dsp.exec_cmd("kitty --class btop --title 'System Monitor' -e btop"))
 hl.bind(M .. " + SHIFT + M", hl.dsp.exec_cmd("kitty --class pulsemixer --title 'Audio Mixer' -e pulsemixer"))
 hl.bind(M .. " + SHIFT + B", hl.dsp.exec_cmd("kitty --class bluetui --title 'Bluetooth' -e bluetui"))
-hl.bind(M .. " + M",         hl.dsp.exec_cmd("kitty --class jellycli --title 'Jellyfin' -e jellycli"))
+hl.bind(M .. " + M",         hl.dsp.exec_cmd("kitty --class jellyfin-tui --title 'Jellyfin Music' -e tmux new-session -A -s music jellyfin-tui"))
 hl.bind(M .. " + F1",        hl.dsp.exec_cmd("kitty --class syshelp --title 'System Reference' -e syshelp"))
 -- Workspace 0 — remote work
 hl.bind(M .. " + 0", function()
