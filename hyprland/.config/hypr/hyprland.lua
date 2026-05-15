@@ -38,7 +38,6 @@ hl.config({
             enabled           = true,
             size              = 4,
             passes            = 2,
-            new_optimizations = true,
         },
 
         shadow = {
