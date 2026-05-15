@@ -332,6 +332,7 @@ for pkg in "${AUR_PACKAGES[@]}"; do
     install_if_missing "$pkg" yay
 done
 success "AUR packages complete"
+warn "NOTE: Run jellyfin-tui manually on first boot to configure your Jellyfin server and credentials"
 
 # =============================================================================
 # ZSH AS DEFAULT SHELL
