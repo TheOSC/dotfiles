@@ -4,87 +4,62 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 32,
+    "height": 38,
     "spacing": 4,
     "margin-top": 4,
-    "margin-left": 8,
-    "margin-right": 8,
-
+    "margin-left": 4,
+    "margin-right": 4,
+    "margin-bottom": 0,
     // ==========================================================================
     // MODULE LAYOUT
     // ==========================================================================
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/submap"
+        "hyprland/workspaces"
     ],
-
     "modules-center": [
-        "clock"
+        "hyprland/window"
     ],
-
     "modules-right": [
-        "pulseaudio",
-        "bluetooth",
-        "network",
-        "custom/vpn",
-        "battery",
-        "cpu",
-        "memory",
-        "tray"
+        "group/pill"
     ],
-
     // ==========================================================================
     // MODULE CONFIGS
     // ==========================================================================
-
     "hyprland/workspaces": {
         "format": "{id}",
         "on-click": "activate",
         "sort-by-number": true,
         "active-only": false,
         "all-outputs": false,
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
-        }
+        "persistent-workspaces": {}
     },
-
-    "hyprland/submap": {
-        "format": "󰌌 {}",
-        "max-length": 8,
-        "tooltip": false
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 60,
+        "separate-outputs": true
     },
-
+    "group/pill": {
+        "orientation": "horizontal",
+        "modules": [
+            "bluetooth",
+            "pulseaudio",
+            "custom/vpn",
+            "network",
+            "battery",
+            "clock"
+        ]
+    },
     "clock": {
         "format": "{:%a %b %d  %H:%M}",
         "format-alt": "{:%Y-%m-%d}",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 60
     },
-
-    "cpu": {
-        "format": "󰘚 {usage}%",
-        "tooltip": true,
-        "interval": 2,
-        "on-click": "kitty --class btop --title 'System Monitor' -e btop"
-    },
-
-    "memory": {
-        "format": "󰍛 {percentage}%",
-        "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
-        "interval": 5,
-        "return-type": "json",
-        "on-click": "kitty --class btop --title 'System Monitor' -e btop"
-    },
-
     "battery": {
         "states": {
             "good": 80,
-            "warning": 30,
-            "critical": 15
+            "warning": 40,
+            "critical": 25
         },
         "format": "{icon} {capacity}%",
         "format-charging": "󰂄 {capacity}%",
@@ -93,17 +68,15 @@
         "tooltip-format": "{timeTo}",
         "interval": 30
     },
-
     "network": {
         "format-wifi": "󰤨 {essid}",
         "format-ethernet": "󰈀 {ifname}",
-        "format-disconnected": "󰤭 disconnected",
+        "format-disconnected": "󰤭",
         "tooltip-format-wifi": "{essid} {signalStrength}%\n{ipaddr}",
         "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
         "on-click": "kitty --class nmtui --title 'Network' -e nmtui",
         "interval": 10
     },
-
     "custom/vpn": {
         "exec": "/usr/local/bin/waybar-vpn-status",
         "interval": 5,
@@ -112,10 +85,9 @@
         "on-click": "vpn-toggle",
         "tooltip": false
     },
-
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "󰝟 muted",
+        "format-muted": "󰝟",
         "format-icons": {
             "default": ["󰕿", "󰖀", "󰕾"]
         },
@@ -124,7 +96,6 @@
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
         "tooltip": true
     },
-
     "bluetooth": {
         "format": "󰂯",
         "format-connected": "󰂱 {device_alias}",
@@ -133,10 +104,5 @@
         "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
         "on-click": "kitty --class bluetui --title 'Bluetooth' -e bluetui"
-    },
-
-    "tray": {
-        "spacing": 8,
-        "icon-size": 16
     }
 }
