@@ -438,6 +438,8 @@ success "Pipewire services enabled"
 
 # Bluetooth
 sudo systemctl enable --now bluetooth
+sudo systemctl enable --now systemd-resolved
+success "systemd-resolved enabled"
 success "Bluetooth enabled"
 
 # SSH agent
