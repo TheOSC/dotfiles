@@ -266,6 +266,8 @@ PACMAN_PACKAGES=(
     # Python (needed for various tools)
     python
     python-pip
+    nodejs
+    npm
 
     # Misc utilities
     curl
