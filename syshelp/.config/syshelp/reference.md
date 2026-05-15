@@ -58,8 +58,8 @@ Everything is driven by wallpaper. One command updates all surfaces.
 
 | Command | Action |
 |---------|--------|
-| wallpaper-set ~/wallpapers/image.jpg | Set wallpaper + regenerate theme |
-| wallpaper-random | Random wallpaper from ~/wallpapers/ |
+| wallpaper-set ~/Pictures/wallpapers/image.jpg | Set wallpaper + regenerate theme |
+| wallpaper-random | Random wallpaper from ~/Pictures/wallpapers/ |
 | hypr-reload | Reload all theme consumers without changing wallpaper |
 
 Theme surfaces updated automatically:
@@ -136,7 +136,7 @@ Dotfiles repo: https://github.com/TheOSC/dotfiles
 | What | Where |
 |------|-------|
 | Dotfiles repo | ~/dotfiles |
-| Wallpapers | ~/wallpapers |
+| Wallpapers | ~/Pictures/wallpapers |
 | Hyprland config | ~/.config/hypr/ |
 | Wallust templates | ~/.config/wallust/templates/ |
 | Scripts | ~/.local/bin/ |
@@ -152,8 +152,8 @@ Emergency binds are always active: Super+Q (terminal), Super+R (launcher), Super
 Check: hyprctl reload in terminal for error output
 
 **Theme not updating**
-Run: wallpaper-set ~/wallpapers/yourimage.jpg manually
-Check: wallust run ~/wallpapers/yourimage.jpg for errors
+Run: wallpaper-set ~/Pictures/wallpapers/yourimage.jpg manually
+Check: wallust run ~/Pictures/wallpapers/yourimage.jpg for errors
 
 **No sound**
 Check: systemctl --user status pipewire

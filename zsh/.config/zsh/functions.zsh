@@ -101,7 +101,7 @@ glt() {
 # Pick wallpaper interactively using yazi
 wallpick() {
     local selected
-    selected=$(find ~/wallpapers -type f \
+    selected=$(find ~/Pictures/wallpapers -type f \
         \( -iname "*.jpg" -o -iname "*.jpeg" \
         -o -iname "*.png" -o -iname "*.webp" \) \
         | fzf --preview 'kitty icat --clear --transfer-mode=memory \

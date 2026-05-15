@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # =============================================================================
 # wallpaper-random
-# Pick a random wallpaper from ~/wallpapers/ and run wallpaper-set
+# Pick a random wallpaper from ~/Pictures/wallpapers/ and run wallpaper-set
 # Usage: wallpaper-random
 # =============================================================================
 
 set -euo pipefail
 
-WALLPAPER_DIR="$HOME/wallpapers"
+WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 
 if [[ ! -d "$WALLPAPER_DIR" ]]; then
     echo "Error: Wallpaper directory not found: $WALLPAPER_DIR"
-    echo "Create it and add some images: mkdir -p ~/wallpapers"
+    echo "Create it and add some images: mkdir -p ~/Pictures/wallpapers"
     exit 1
 fi
 

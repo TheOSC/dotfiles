@@ -386,7 +386,7 @@ info "Creating required directories..."
 mkdir -p ~/.config
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/applications
-mkdir -p ~/wallpapers
+mkdir -p ~/Pictures/wallpapers
 mkdir -p ~/Pictures/Screenshots
 
 info "Stowing dotfile packages..."
@@ -471,7 +471,7 @@ if [[ -f "$DEFAULT_WALLPAPER" ]]; then
     success "Initial theme generated"
 else
     warn "No default wallpaper found at ${DEFAULT_WALLPAPER}"
-    warn "Add a wallpaper to ~/wallpapers/ and run: wallpaper-set ~/wallpapers/yourimage.jpg"
+    warn "Add a wallpaper to ~/Pictures/wallpapers/ and run: wallpaper-set ~/Pictures/wallpapers/yourimage.jpg"
 fi
 
 # =============================================================================
@@ -493,8 +493,8 @@ echo -e "${GREEN}${BOLD}╔═════════════════�
 echo -e "${GREEN}${BOLD}║   Environment bootstrap complete!                  ║${RESET}"
 echo -e "${GREEN}${BOLD}║                                                    ║${RESET}"
 echo -e "${GREEN}${BOLD}║   Next steps:                                      ║${RESET}"
-echo -e "${GREEN}${BOLD}║   1. Add a wallpaper to ~/wallpapers/              ║${RESET}"
-echo -e "${GREEN}${BOLD}║   2. Run: wallpaper-set ~/wallpapers/yourimage.jpg ║${RESET}"
+echo -e "${GREEN}${BOLD}║   1. Add a wallpaper to ~/Pictures/wallpapers/              ║${RESET}"
+echo -e "${GREEN}${BOLD}║   2. Run: wallpaper-set ~/Pictures/wallpapers/yourimage.jpg ║${RESET}"
 echo -e "${GREEN}${BOLD}║   3. Install Pywalfox extension in Firefox         ║${RESET}"
 echo -e "${GREEN}${BOLD}║   4. Log out and back in (or reboot)               ║${RESET}"
 echo -e "${GREEN}${BOLD}║   5. Hit Super+F1 if you forget anything           ║${RESET}"
@@ -502,6 +502,6 @@ echo -e "${GREEN}${BOLD}╚═════════════════�
 
 echo
 info "Full keybind reference: Super+F1"
-info "Wallpaper library:      ~/wallpapers/"
+info "Wallpaper library:      ~/Pictures/wallpapers/"
 info "Dotfiles location:      ${DOTFILES_DIR}"
 info "System reference:       syshelp"

@@ -118,3 +118,8 @@ echo "      Wallpaper path saved"
 echo ""
 echo "Theme updated successfully."
 echo "Wallpaper: $IMAGE"
+
+# Fix hyprlock color format — strip # from rgb(#xxxxxx) → rgb(xxxxxx)
+if [[ -f "$HOME/.config/hypr/hyprlock.conf" ]]; then
+    sed -i 's/rgb(#/rgb(/g' "$HOME/.config/hypr/hyprlock.conf"
+fi
