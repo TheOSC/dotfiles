@@ -30,7 +30,7 @@ keymap = [
     # File operations
     { on = "o",         run = "open",               desc = "Open" },
     { on = "<Enter>",   run = "open",               desc = "Open" },
-    { on = ["<S>", "<Enter>"], run = "open",        desc = "Set wallpaper" },
+    { on = ["<S>", "<Enter>"], run = "shell 'export PATH=\"$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH\"; if [[ \"$PWD\" == *wallpapers* ]]; then \"$HOME/.local/bin/wallpaper-set\" \"$1\"; fi'", desc = "Set wallpaper" },
     { on = "O",         run = "open --interactive", desc = "Open with" },
     { on = "y",         run = "yank",               desc = "Yank (copy)" },
     { on = "x",         run = "yank --cut",         desc = "Yank (cut)" },
