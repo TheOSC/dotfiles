@@ -66,3 +66,10 @@ gtk4.target   = "~/.config/gtk-4.0/colors.css"
 # Hyprlock login screen colors
 hyprlock.template = "hyprlock-colors.conf"
 hyprlock.target   = "~/.config/hypr/hyprlock-colors.conf"
+# Pywal-compatible colors file (for pywalfox Firefox theming)
+wal.template = "wal-colors"
+wal.target   = "~/.cache/wal/colors"
+
+# Pywal-compatible colors.json (for pywalfox Firefox theming)
+waljson.template = "wal-colors.json"
+waljson.target   = "~/.cache/wal/colors.json"

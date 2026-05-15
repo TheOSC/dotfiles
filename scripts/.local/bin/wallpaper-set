@@ -106,7 +106,7 @@ fi
 
 # Firefox — pywalfox update
 if pgrep -x firefox > /dev/null; then
-    pywalfox update
+    /home/max/.local/bin/pywalfox update
     echo "      Firefox theme updated"
 fi
 
