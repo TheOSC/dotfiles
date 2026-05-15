@@ -128,10 +128,11 @@ require("lazy").setup({
     -- -------------------------------------------------------------------------
     {
         "nvim-treesitter/nvim-treesitter",
-	enabled = false,
         build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter.configs").setup({
+            local ok, configs = pcall(require, "nvim-treesitter.configs")
+            if not ok then return end
+            configs.setup({
                 ensure_installed = {
                     "lua", "bash", "python", "javascript",
                     "typescript", "json", "yaml", "toml",
@@ -145,38 +146,49 @@ require("lazy").setup({
     },
 
     -- -------------------------------------------------------------------------
-    -- LSP
+    -- LSP — native vim.lsp.config API (nvim 0.11+)
     -- -------------------------------------------------------------------------
     {
-        "neovim/nvim-lspconfig",
-	enabled = false,
-        dependencies = {
-            "williamboman/mason.nvim",
-	    enabled = false,
-            "williamboman/mason-lspconfig.nvim",
-        },
+        "williamboman/mason.nvim",
         config = function()
             require("mason").setup()
+        end,
+    },
+
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "williamboman/mason.nvim" },
+        config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = { "lua_ls", "bashls", "pyright" },
                 automatic_installation = true,
             })
+        end,
+    },
 
-            local lspconfig = require("lspconfig")
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+        },
+        config = function()
             local on_attach = function(_, bufnr)
                 local opts = { buffer = bufnr, noremap = true, silent = true }
-                vim.keymap.set("n", "gd",          vim.lsp.buf.definition,      opts)
-                vim.keymap.set("n", "gD",          vim.lsp.buf.declaration,     opts)
-                vim.keymap.set("n", "gr",          vim.lsp.buf.references,      opts)
-                vim.keymap.set("n", "K",           vim.lsp.buf.hover,           opts)
-                vim.keymap.set("n", "<leader>rn",  vim.lsp.buf.rename,          opts)
-                vim.keymap.set("n", "<leader>ca",  vim.lsp.buf.code_action,     opts)
-                vim.keymap.set("n", "<leader>f",   vim.lsp.buf.format,          opts)
+                vim.keymap.set("n", "gd",         vim.lsp.buf.definition,  opts)
+                vim.keymap.set("n", "gD",         vim.lsp.buf.declaration, opts)
+                vim.keymap.set("n", "gr",         vim.lsp.buf.references,  opts)
+                vim.keymap.set("n", "K",          vim.lsp.buf.hover,       opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename,      opts)
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "<leader>f",  vim.lsp.buf.format,      opts)
             end
 
-            lspconfig.lua_ls.setup({ on_attach = on_attach })
-            lspconfig.bashls.setup({ on_attach = on_attach })
-            lspconfig.pyright.setup({ on_attach = on_attach })
+            vim.lsp.config("lua_ls",  { on_attach = on_attach })
+            vim.lsp.config("bashls",  { on_attach = on_attach })
+            vim.lsp.config("pyright", { on_attach = on_attach })
+
+            vim.lsp.enable({ "lua_ls", "bashls", "pyright" })
         end,
     },
 
@@ -262,7 +274,6 @@ require("lazy").setup({
             require("nvim-autopairs").setup({
                 check_ts = true,
             })
-            -- Integrate with cmp
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
@@ -302,7 +313,6 @@ require("lazy").setup({
     },
 
 }, {
-    -- lazy.nvim options
     ui = {
         border = "rounded",
     },
