@@ -48,6 +48,7 @@ Last updated: 2026-05
 | Super+V | Clipboard history |
 | Print | Screenshot region + annotate |
 | Super+Print | Screenshot fullscreen |
+| Super+N | Network TUI (nmtui) |
 
 ---
 
@@ -87,6 +88,8 @@ Theme surfaces updated automatically:
 | yazi | File manager with image previews | Super+E |
 | lazygit | Git TUI — stage, commit, push | lazygit |
 | nmtui | Network/WiFi connection manager | nmtui |
+| vpn-toggle | Toggle WireGuard VPN on/off | vpn-toggle |
+| vpn-connect | Bring up VPN with route fix | vpn-connect |
 
 ### Remote Work (Workspace 0)
 | Name | What it does |
