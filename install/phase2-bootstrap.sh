@@ -238,6 +238,7 @@ PACMAN_PACKAGES=(
     # Qt theming
     kvantum
     qt5ct
+    kvantum-qt5
     qt6ct
 
     # System tools
@@ -370,7 +371,6 @@ STOW_PACKAGES=(
     btop
     mpv
     gtk
-    kvantum
     hypridle
     hyprlock
     wallust
