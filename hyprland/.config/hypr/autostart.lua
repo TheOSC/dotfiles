@@ -12,7 +12,7 @@ hl.on("hyprland.start", function()
     -- Restore last wallpaper (awww remembers last set)
     hl.exec_cmd("awww restore")
 
--- Status bar
+    -- Status bar
     hl.exec_cmd("waybar")
 
     -- Notification daemon
@@ -27,15 +27,8 @@ hl.on("hyprland.start", function()
     -- Monitor management daemon
     hl.exec_cmd("hyprdynamicmonitors run")
 
-    -- Pipewire (should be started by systemd user service,
-    -- but belt-and-suspenders here)
-    hl.exec_cmd("uwsm app -- pipewire")
-    hl.exec_cmd("uwsm app -- wireplumber")
-
     -- Policy kit agent (needed for some privilege escalation prompts)
     hl.exec_cmd("uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 
 end)
 
--- GTK settings daemon (dark mode + theme broadcast)
-hl.exec_cmd("xsettingsd")

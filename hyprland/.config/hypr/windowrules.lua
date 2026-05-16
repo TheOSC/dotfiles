@@ -42,10 +42,9 @@ hl.window_rule({ match = { class = "hyprdynamicmonitors" }, center = true })
 -- Workspace assignments
 hl.window_rule({ match = { class = "firefox" },              workspace = "1" })
 -- Misc
--- RDM popups — float and center all non-main windows
-hl.window_rule({ match = { class = "RemoteDesktopManager", title = "Remote Desktop Manager" }, workspace = "10" })
-hl.window_rule({ match = { class = "RemoteDesktopManager" }, float = true })
+-- RDM — main window tiles on workspace 10, dialogs float and center
+hl.window_rule({ match = { class = "RemoteDesktopManager", title = "Remote Desktop Manager" }, workspace = "10", float = false })
 hl.window_rule({ match = { class = "RemoteDesktopManager" }, center = true })
-hl.window_rule({ match = { class = "RemoteDesktopManager", title = "Remote Desktop Manager" }, float = false })
+hl.window_rule({ match = { class = "RemoteDesktopManager", title = "(?!Remote Desktop Manager).*" }, float = true })
 -- Thunar dialogs — center only
 hl.window_rule({ match = { class = "thunar" }, center = true })
