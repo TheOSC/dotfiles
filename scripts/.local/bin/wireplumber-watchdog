@@ -1,7 +1,9 @@
 #!/bin/bash
+sleep 5
+/usr/bin/systemctl --user restart wireplumber pipewire pipewire-pulse
 while true; do
-    sleep 60
-    if /usr/bin/pactl info 2>/dev/null | grep -q "Dummy Output"; then
+    sleep 30
+    if /usr/bin/pactl info 2>/dev/null | grep -qE "auto_null|Dummy Output"; then
         /usr/bin/systemctl --user restart wireplumber pipewire pipewire-pulse
     fi
 done

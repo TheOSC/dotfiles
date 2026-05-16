@@ -14,12 +14,7 @@ hl.bind(M .. " + F1",        hl.dsp.exec_cmd("kitty --class syshelp --title 'Sys
 -- Remote work
 hl.bind(M .. " + 0", function()
     hl.dispatch(hl.dsp.focus({ workspace = "10" }))
-    local handle = io.popen("pgrep -f remotedesktopmanager")
-    local result = handle:read("*a")
-    handle:close()
-    if result == "" then
-        hl.dispatch(hl.dsp.exec_cmd("/usr/bin/remotedesktopmanager"))
-    end
+    hl.dispatch(hl.dsp.exec_cmd("/usr/bin/remotedesktopmanager"))
 end)
 hl.bind(M .. " + SHIFT + 0", hl.dsp.window.move({ workspace = "10" }))
 -- Window management
