@@ -373,7 +373,6 @@ STOW_PACKAGES=(
     mpv
     gtk
     hypridle
-    hyprlock
     wallust
     scripts
     desktop-entries
@@ -381,6 +380,10 @@ STOW_PACKAGES=(
     starship
     greetd
     monitors
+    systemd
+    qt
+    kvantum
+    vpn
 )
 
 info "Creating required directories..."
@@ -425,7 +428,14 @@ done
 
 # Make scripts executable
 chmod +x ~/.local/bin/*
-sudo ln -sf "$HOME/.local/bin/firefox-launch" /usr/local/bin/firefox-launch
+sudo ln -sf "$HOME/.local/bin/firefox-launch"        /usr/local/bin/firefox-launch
+sudo ln -sf "$HOME/.local/bin/syshelp"              /usr/local/bin/syshelp
+sudo ln -sf "$HOME/.local/bin/thunar-launch"        /usr/local/bin/thunar-launch
+sudo ln -sf "$HOME/.local/bin/wallpaper-set"        /usr/local/bin/wallpaper-set
+sudo ln -sf "$HOME/.local/bin/wallpaper-random"     /usr/local/bin/wallpaper-random
+sudo ln -sf "$HOME/.local/bin/vpn-toggle"           /usr/local/bin/vpn-toggle
+sudo ln -sf "$HOME/.local/bin/waybar-vpn-status"    /usr/local/bin/waybar-vpn-status
+sudo ln -sf "$HOME/.local/bin/wireplumber-watchdog" /usr/local/bin/wireplumber-watchdog
 success "Scripts marked executable"
 
 # =============================================================================
@@ -441,7 +451,7 @@ sudo tee /etc/greetd/config.toml > /dev/null << EOF
 vt = 1
 
 [default_session]
-command = "tuigreet --time --remember --cmd Hyprland"
+command = "tuigreet --time --remember --cmd start-hyprland"
 user = "greeter"
 EOF
 
@@ -470,6 +480,25 @@ success "systemd-resolved enabled"
 systemctl --user enable --now ssh-agent
 success "SSH agent enabled"
 
+# Audio watchdog
+systemctl --user enable --now wireplumber-watchdog
+success "Wireplumber watchdog enabled"
+
+# =============================================================================
+# GTK DARK MODE
+# =============================================================================
+section "GTK Dark Mode"
+if grep -q "GTK_THEME" /etc/environment 2>/dev/null; then
+    skip "GTK dark mode already set in /etc/environment"
+else
+    info "Setting GTK dark mode in /etc/environment..."
+    sudo tee -a /etc/environment << 'ENVEOF'
+GTK_THEME=Adwaita:dark
+GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+ENVEOF
+    success "GTK dark mode configured"
+fi
+
 # =============================================================================
 # PYWALFOX
 # =============================================================================
@@ -477,7 +506,7 @@ success "SSH agent enabled"
 section "Firefox Theming"
 
 info "Installing pywalfox native connector..."
-pywalfox install
+pywalfox install --profile-path ~/.config/mozilla/firefox
 success "Pywalfox installed"
 info "After first boot open Firefox and install the Pywalfox extension from addons.mozilla.org"
 

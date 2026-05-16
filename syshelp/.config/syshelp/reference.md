@@ -13,7 +13,7 @@ Last updated: 2026-05
 | Super+B | Browser (firefox) |
 | Super+Space | Launcher (fuzzel) |
 | Super+E | Files (yazi) |
-| Super+M | Jellyfin audio (jellycli) |
+| Super+M | Jellyfin audio (jellyfin-tui) |
 | Super+Shift+T | System monitor (btop) |
 | Super+Shift+M | Audio mixer (pulsemixer) |
 | Super+Shift+B | Bluetooth (bluetui) |
@@ -30,6 +30,8 @@ Last updated: 2026-05
 | Super+Arrows | Move focus |
 | Super+Shift+Arrows | Move window |
 | Super+Alt+Mouse | Resize window |
+| Super+W/A/S/D | Move window (WASD) |
+| Super+H/J/K/L | Move window (vim) |
 
 ### Workspaces
 | Bind | Action |
@@ -37,14 +39,13 @@ Last updated: 2026-05
 | Super+1-9 | Switch workspace |
 | Super+Shift+1-9 | Move window to workspace |
 | Super+0 | Remote work workspace (launches RDM if needed) |
-| Super+Shift+0 | Move window to workspace 0 |
+| Super+Shift+0 | Move window to workspace 10 |
 
 ### System
 | Bind | Action |
 |------|--------|
-| Super+L | Lock screen |
+| Super+Shift+L | Lock screen |
 | Super+Shift+R | Reload Hyprland config |
-| Super+W | Wallpaper picker |
 | Super+V | Clipboard history |
 | Print | Screenshot region + annotate |
 | Super+Print | Screenshot fullscreen |
@@ -84,7 +85,7 @@ Theme surfaces updated automatically:
 | btop | System monitor (CPU, RAM, processes) | Super+Shift+T |
 | pulsemixer | Audio volume and routing control | Super+Shift+M |
 | bluetui | Bluetooth device management | Super+Shift+B |
-| jellycli | Jellyfin music streaming client | Super+M |
+| jellyfin-tui | Jellyfin music streaming client | Super+M |
 | yazi | File manager with image previews | Super+E |
 | lazygit | Git TUI — stage, commit, push | lazygit |
 | nmtui | Network/WiFi connection manager | nmtui |
@@ -110,7 +111,7 @@ Theme surfaces updated automatically:
 | awww | Wallpaper daemon | Managed by wallpaper-set |
 | wallust | Theme color engine | Managed by wallpaper-set |
 | hypridle | Idle detection → auto lock | Runs in background |
-| hyprlock | Lock screen | Super+L or auto on idle |
+| hyprlock | Lock screen | Super+Shift+L or auto on idle |
 | thunar | GUI file manager — drag-and-drop, USB/flash mounting | thunar |
 ---
 
@@ -148,7 +149,7 @@ Dotfiles repo: https://github.com/TheOSC/dotfiles
 ## If Something Breaks
 
 **Hyprland won't reload config**
-Emergency binds are always active: Super+Q (terminal), Super+R (launcher), Super+M (exit)
+Emergency binds are always active: Super+Q (close window), Super+Shift+R (reload config)
 Check: hyprctl reload in terminal for error output
 
 **Theme not updating**
