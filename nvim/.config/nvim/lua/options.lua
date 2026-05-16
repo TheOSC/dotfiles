@@ -79,3 +79,4 @@ opt.synmaxcol       = 300           -- Don't syntax highlight very long lines
 -- ENSURE DIRS EXIST
 -- =============================================================================
 vim.fn.mkdir(vim.fn.expand("~/.local/state/nvim/undo"), "p")
+vim.opt.backupcopy = "yes"
