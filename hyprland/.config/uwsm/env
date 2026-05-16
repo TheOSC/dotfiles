@@ -1,4 +1,6 @@
-export GTK_THEME=Adwaita:dark
-export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-export XCURSOR_THEME=Bibata-Modern-Classic
-export XCURSOR_SIZE=24
+# =============================================================================
+# uwsm/env
+# Environment variables for the graphical session
+# NOTE: This file is NOT read by start-hyprland (compiled binary)
+# GTK theming and other session vars must be set in /etc/environment
+# =============================================================================
