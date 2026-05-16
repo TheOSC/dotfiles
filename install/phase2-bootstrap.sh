@@ -255,11 +255,11 @@ PACMAN_PACKAGES=(
     playerctl
     upower
     pavucontrol
+    polkit-gnome
 
     # Hyprland ecosystem
     hypridle
     hyprlock
-    hyprpaper
 
     # Image handling
     imagemagick
@@ -408,6 +408,8 @@ CLEANUP_PATHS=(
     "$HOME/.config/vpn"
     "$HOME/.config/qt5ct"
     "$HOME/.config/qt6ct"
+    "$HOME/.config/Kvantum"
+    "$HOME/.config/starship"
 )
 for path in "${CLEANUP_PATHS[@]}"; do
     if [[ -e "$path" && ! -L "$path" ]]; then
@@ -449,12 +451,13 @@ sudo mkdir -p /etc/greetd
 sudo tee /etc/greetd/config.toml > /dev/null << EOF
 [terminal]
 vt = 1
-
 [default_session]
 command = "tuigreet --time --remember --cmd start-hyprland"
 user = "greeter"
+[initial_session]
+command = "start-hyprland"
+user = "$(whoami)"
 EOF
-
 sudo systemctl enable greetd
 success "greetd configured and enabled"
 
@@ -506,8 +509,12 @@ fi
 section "Firefox Theming"
 
 info "Installing pywalfox native connector..."
-pywalfox install --profile-path ~/.config/mozilla/firefox
-success "Pywalfox installed"
+mkdir -p ~/.config/mozilla/firefox
+if pywalfox install --profile-path ~/.config/mozilla/firefox 2>/dev/null; then
+    success "Pywalfox installed"
+else
+    warn "Pywalfox install failed — launch Firefox once first, then run: pywalfox install --profile-path ~/.config/mozilla/firefox"
+fi
 info "After first boot open Firefox and install the Pywalfox extension from addons.mozilla.org"
 
 # =============================================================================
@@ -518,7 +525,7 @@ info "Syncing Neovim plugins headlessly..."
 nvim --headless "+Lazy sync" +qa 2>/dev/null && success "Neovim plugins synced" || warn "Neovim plugin sync failed — run :Lazy sync manually"
 
 section "Initial Theme Generation"
-DEFAULT_WALLPAPER=$(ls "$HOME/Pictures/wallpapers/"*.{jpg,jpeg,png} 2>/dev/null | head -1)
+DEFAULT_WALLPAPER=$(find "$HOME/Pictures/wallpapers/" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) 2>/dev/null | head -1)
 if [[ -n "$DEFAULT_WALLPAPER" ]]; then
     info "Setting wallpaper and generating theme..."
     wallpaper-set "$DEFAULT_WALLPAPER"
@@ -546,10 +553,10 @@ echo -e "${GREEN}${BOLD}╔═════════════════�
 echo -e "${GREEN}${BOLD}║   Environment bootstrap complete!                  ║${RESET}"
 echo -e "${GREEN}${BOLD}║                                                    ║${RESET}"
 echo -e "${GREEN}${BOLD}║   Next steps:                                      ║${RESET}"
-echo -e "${GREEN}${BOLD}║   1. Add a wallpaper to ~/Pictures/wallpapers/              ║${RESET}"
-echo -e "${GREEN}${BOLD}║   2. Run: wallpaper-set ~/Pictures/wallpapers/yourimage.jpg ║${RESET}"
-echo -e "${GREEN}${BOLD}║   3. Install Pywalfox extension in Firefox         ║${RESET}"
-echo -e "${GREEN}${BOLD}║   4. Log out and back in (or reboot)               ║${RESET}"
+echo -e "${GREEN}${BOLD}║   1. Reboot into your new desktop                  ║${RESET}"
+echo -e "${GREEN}${BOLD}║   2. Open Firefox, install Pywalfox extension      ║${RESET}"
+echo -e "${GREEN}${BOLD}║   3. Run jellyfin-tui to configure Jellyfin        ║${RESET}"
+echo -e "${GREEN}${BOLD}║   4. Import WireGuard config via nmcli             ║${RESET}"
 echo -e "${GREEN}${BOLD}║   5. Hit Super+F1 if you forget anything           ║${RESET}"
 echo -e "${GREEN}${BOLD}╚════════════════════════════════════════════════════╝${RESET}"
 
