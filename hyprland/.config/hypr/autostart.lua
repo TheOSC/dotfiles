@@ -36,3 +36,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 
 end)
+
+-- GTK settings daemon (dark mode + theme broadcast)
+hl.exec_cmd("xsettingsd")
