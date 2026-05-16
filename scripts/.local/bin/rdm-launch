@@ -1,0 +1,5 @@
+#!/bin/bash
+hyprctl dispatch workspace 10
+if ! pgrep -f "remotedesktopmanager" > /dev/null; then
+    /usr/bin/remotedesktopmanager &
+fi

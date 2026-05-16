@@ -1,0 +1,7 @@
+#!/bin/bash
+while true; do
+    sleep 60
+    if /usr/bin/pactl info 2>/dev/null | grep -q "Dummy Output"; then
+        /usr/bin/systemctl --user restart wireplumber pipewire pipewire-pulse
+    fi
+done

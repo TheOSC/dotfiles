@@ -1,0 +1,4 @@
+#!/bin/bash
+thunar --quit 2>/dev/null
+sleep 0.2
+exec thunar "$@"

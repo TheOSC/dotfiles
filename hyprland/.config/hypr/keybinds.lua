@@ -11,15 +11,17 @@ hl.bind(M .. " + SHIFT + M", hl.dsp.exec_cmd("kitty --class pulsemixer --title '
 hl.bind(M .. " + SHIFT + B", hl.dsp.exec_cmd("kitty --class bluetui --title 'Bluetooth' -e bluetui"))
 hl.bind(M .. " + M",         hl.dsp.exec_cmd("kitty --class jellyfin-tui --title 'Jellyfin Music' -e tmux new-session -A -s music jellyfin-tui"))
 hl.bind(M .. " + F1",        hl.dsp.exec_cmd("kitty --class syshelp --title 'System Reference' -e syshelp"))
--- Workspace 0 — remote work
+-- Remote work
 hl.bind(M .. " + 0", function()
-    local rdm_running = os.execute("pgrep -x RemoteDesktopMana > /dev/null 2>&1") == 0
-    if not rdm_running then
-        hl.dispatch(hl.dsp.exec_cmd("rdm"))
+    hl.dispatch(hl.dsp.focus({ workspace = "10" }))
+    local handle = io.popen("pgrep -f remotedesktopmanager")
+    local result = handle:read("*a")
+    handle:close()
+    if result == "" then
+        hl.dispatch(hl.dsp.exec_cmd("/usr/bin/remotedesktopmanager"))
     end
-    hl.dispatch(hl.dsp.focus({ workspace = "0" }))
 end)
-hl.bind(M .. " + SHIFT + 0", hl.dsp.window.move({ workspace = "0" }))
+hl.bind(M .. " + SHIFT + 0", hl.dsp.window.move({ workspace = "10" }))
 -- Window management
 hl.bind(M .. " + Q",         hl.dsp.window.close())
 hl.bind(M .. " + F",         hl.dsp.window.fullscreen({ mode = "maximized" }))

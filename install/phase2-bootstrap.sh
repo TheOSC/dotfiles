@@ -222,6 +222,7 @@ PACMAN_PACKAGES=(
     thunar-volman
     gvfs
     gvfs-mtp        # Android/MTP device support
+    tumbler             # Thumbnail service for Thunar
 
     # Fonts
     ttf-jetbrains-mono-nerd
