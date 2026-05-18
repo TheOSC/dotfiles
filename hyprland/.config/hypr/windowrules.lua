@@ -40,7 +40,6 @@ hl.window_rule({ match = { class = "hyprdynamicmonitors" }, float = true })
 hl.window_rule({ match = { class = "hyprdynamicmonitors" }, size = { 900, 600 } })
 hl.window_rule({ match = { class = "hyprdynamicmonitors" }, center = true })
 -- Workspace assignments
-hl.window_rule({ match = { class = "firefox" },              workspace = "1" })
 -- Misc
 -- RDM — main window tiles on workspace 10, dialogs float and center
 hl.window_rule({ match = { class = "RemoteDesktopManager", title = "Remote Desktop Manager" }, workspace = "10", float = false })
