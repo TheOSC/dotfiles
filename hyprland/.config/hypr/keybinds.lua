@@ -38,11 +38,6 @@ hl.bind(M .. " + A", hl.dsp.window.move({ direction = "l" }))
 hl.bind(M .. " + D", hl.dsp.window.move({ direction = "r" }))
 hl.bind(M .. " + W", hl.dsp.window.move({ direction = "u" }))
 hl.bind(M .. " + S", hl.dsp.window.move({ direction = "d" }))
--- Move windows — HJKL
-hl.bind(M .. " + H", hl.dsp.window.move({ direction = "l" }))
-hl.bind(M .. " + J", hl.dsp.window.move({ direction = "d" }))
-hl.bind(M .. " + K", hl.dsp.window.move({ direction = "u" }))
-hl.bind(M .. " + L", hl.dsp.window.move({ direction = "r" }))
 -- Mouse resize
 hl.bind(M .. " + ALT + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Workspaces 1-9
@@ -51,11 +46,19 @@ for i = 1, 9 do
     hl.bind(M .. " + SHIFT + " .. tostring(i), hl.dsp.window.move({ workspace = tostring(i) }))
 end
 -- System
-hl.bind(M .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(M .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(M .. " + SHIFT + R", function() hl.dispatch(hl.dsp.reload()) end)
 hl.bind(M .. " + V",         hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
 -- Network
 hl.bind(M .. " + n",          hl.dsp.exec_cmd("kitty --class nmtui --title 'Network' -e nmtui"))
+
+-- Media keys
+hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"))
+hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"))
+hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"))
+hl.bind("XF86AudioMicMute",      hl.dsp.exec_cmd("pactl set-source-mute @DEFAULT_SOURCE@ toggle"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"))
+hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("brightnessctl set 5%+"))
 
 -- Screenshots
 hl.bind("Print",          hl.dsp.exec_cmd("grimblast --freeze save area - | satty --filename -"))

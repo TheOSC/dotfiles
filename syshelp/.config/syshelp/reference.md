@@ -31,7 +31,6 @@ Last updated: 2026-05
 | Super+Shift+Arrows | Move window |
 | Super+Alt+Mouse | Resize window |
 | Super+W/A/S/D | Move window (WASD) |
-| Super+H/J/K/L | Move window (vim) |
 
 ### Workspaces
 | Bind | Action |
@@ -44,12 +43,22 @@ Last updated: 2026-05
 ### System
 | Bind | Action |
 |------|--------|
-| Super+Shift+L | Lock screen |
+| Super+L | Lock screen |
 | Super+Shift+R | Reload Hyprland config |
 | Super+V | Clipboard history |
 | Print | Screenshot region + annotate |
 | Super+Print | Screenshot fullscreen |
 | Super+N | Network TUI (nmtui) |
+
+### Media Keys
+| Bind | Action |
+|------|--------|
+| F1 | Mute / unmute audio |
+| F2 | Volume down |
+| F3 | Volume up |
+| F4 | Mic mute |
+| F6 | Brightness down |
+| F7 | Brightness up |
 
 ---
 
@@ -111,7 +120,7 @@ Theme surfaces updated automatically:
 | awww | Wallpaper daemon | Managed by wallpaper-set |
 | wallust | Theme color engine | Managed by wallpaper-set |
 | hypridle | Idle detection → auto lock | Runs in background |
-| hyprlock | Lock screen | Super+Shift+L or auto on idle |
+| hyprlock | Lock screen | Super+L or auto on idle |
 | thunar | GUI file manager — drag-and-drop, USB/flash mounting | thunar |
 ---
 
