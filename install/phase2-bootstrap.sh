@@ -319,6 +319,9 @@ AUR_PACKAGES=(
     jellyfin-tui
     jellyfin-mpv-shim
 
+    # Nextcloud sync
+    nextcloud-client
+
     # Remote desktop
     remote-desktop-manager
 
