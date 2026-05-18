@@ -46,6 +46,7 @@ Last updated: 2026-05
 | Super+L | Lock screen |
 | Super+Shift+R | Reload Hyprland config |
 | Super+V | Clipboard history |
+| Super+. | Emoji picker |
 | Print | Screenshot region + annotate |
 | Super+Print | Screenshot fullscreen |
 | Super+N | Network TUI (nmtui) |
