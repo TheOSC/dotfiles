@@ -124,3 +124,9 @@ ZSHCONFIG="$XDG_CONFIG_HOME/zsh"
 [[ -f "$ZSHCONFIG/aliases.zsh" ]]   && source "$ZSHCONFIG/aliases.zsh"
 [[ -f "$ZSHCONFIG/functions.zsh" ]] && source "$ZSHCONFIG/functions.zsh"
 [[ -f "$ZSHCONFIG/prompt.zsh" ]]    && source "$ZSHCONFIG/prompt.zsh"
+
+# Show system info on first terminal of session
+if [ -z "$FASTFETCH_SHOWN" ]; then
+    export FASTFETCH_SHOWN=1
+    fastfetch
+fi

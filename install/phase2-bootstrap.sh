@@ -272,6 +272,7 @@ PACMAN_PACKAGES=(
     npm
 
     # Misc utilities
+    fastfetch
     curl
     wget
     unzip
