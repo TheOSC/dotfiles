@@ -144,3 +144,9 @@ window#waybar.hidden {
     margin-bottom: 5px;
     animation: blink 1s linear infinite;
 }
+#custom-nextcloud.connected {
+    color: @foreground;
+}
+#custom-nextcloud.disconnected {
+    color: #666666;
+}

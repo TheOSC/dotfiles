@@ -27,6 +27,9 @@ hl.on("hyprland.start", function()
     -- Monitor management daemon
     hl.exec_cmd("hyprdynamicmonitors run")
 
+    -- Nextcloud sync client
+    hl.exec_cmd("nextcloud --background")
+
     -- Policy kit agent (needed for some privilege escalation prompts)
     hl.exec_cmd("uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 
