@@ -26,7 +26,6 @@ hl.on("hyprland.start", function()
 
     -- Monitor management daemon
     hl.exec_cmd("hyprdynamicmonitors run")
-    hl.exec_cmd("monitor-setup")
 
     -- Nextcloud sync client
     hl.exec_cmd("nextcloud --background")
