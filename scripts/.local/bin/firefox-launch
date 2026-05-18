@@ -1,18 +1,11 @@
 #!/bin/bash
 # firefox-launch — graceful shutdown + corruption recovery wrapper
-
 PROFILE_DIR=$(find ~/.config/mozilla/firefox -maxdepth 1 -name "*.default-release" 2>/dev/null | head -1)
 
-# If Firefox is running, try graceful shutdown first (up to 10s)
+# If Firefox is already running, just open a new window
 if pgrep -x firefox > /dev/null; then
-    pkill -TERM firefox
-    for i in $(seq 1 10); do
-        sleep 1
-        pgrep -x firefox > /dev/null || break
-    done
-    # Force kill if still running
-    pkill -9 -x firefox 2>/dev/null
-    sleep 0.5
+    exec /usr/bin/firefox --new-window "$@"
+    exit
 fi
 
 # Clear lock files
@@ -20,7 +13,7 @@ if [ -n "$PROFILE_DIR" ]; then
     rm -f "$PROFILE_DIR/lock" "$PROFILE_DIR/.parentlock"
 fi
 
-# If sessionstore shows signs of corruption (exists but firefox is not running), back it up
+# If sessionstore shows signs of corruption, back it up
 if [ -n "$PROFILE_DIR" ] && [ -f "$PROFILE_DIR/sessionstore-backups/recovery.jsonlz4" ]; then
     CRASHES=$(cat "$PROFILE_DIR/crashes/events/"* 2>/dev/null | wc -l)
     if [ "$CRASHES" -gt 0 ] || [ -f "$PROFILE_DIR/sessionstore.jsonlz4" ]; then
