@@ -61,6 +61,7 @@ window#waybar.hidden {
 
 /* PILL — all modules share these base styles */
 #bluetooth,
+#custom-nextcloud,
 #pulseaudio,
 #custom-vpn,
 #network,
