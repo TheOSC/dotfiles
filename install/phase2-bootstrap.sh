@@ -312,6 +312,15 @@ AUR_PACKAGES=(
     #unar
     unar
 
+    # Keyring
+    gnome-keyring
+    libsecret
+    seahorse
+
+
+    # Emoji picker
+    rofimoji
+
     # Firefox theming
     pywalfox
 
