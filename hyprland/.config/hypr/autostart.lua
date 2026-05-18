@@ -36,18 +36,3 @@ hl.on("hyprland.start", function()
 end)
 
 
--- Auto-apply monitor layout when a monitor is added
-hl.on("monitor.added", function(m)
-    local monitors = hl.get_monitors()
-    local has_dp4 = false
-    local has_dp6 = false
-    for _, mon in ipairs(monitors) do
-        if mon.name == "DP-4" then has_dp4 = true end
-        if mon.name == "DP-6" then has_dp6 = true end
-    end
-    if has_dp4 and has_dp6 then
-        hl.monitor({ output = "DP-4", mode = "1920x1080@60", position = "-1080x0", scale = 1, transform = 3 })
-        hl.monitor({ output = "eDP-1", mode = "1920x1080@60", position = "0x0", scale = 1 })
-        hl.monitor({ output = "DP-6", mode = "3840x2160@30", position = "0x-2160", scale = 1 })
-    end
-end)

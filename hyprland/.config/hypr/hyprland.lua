@@ -104,12 +104,10 @@ hl.config({
 -- Configure with: hyprdynamicmonitors tui
 -- Fallback for any display not covered by a saved profile
 -- =============================================================================
-hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = 1,
-})
+hl.monitor({ output = "eDP-1", mode = "1920x1080@60", position = "0x0",     scale = 1 })
+hl.monitor({ output = "DP-4",  mode = "1920x1080@60", position = "-1080x0", scale = 1, transform = 3 })
+hl.monitor({ output = "DP-6",  mode = "3840x2160@30", position = "0x-2160", scale = 1 })
+hl.monitor({ output = "",      mode = "preferred",    position = "auto",    scale = 1 })
 
 -- =============================================================================
 -- ENVIRONMENT VARIABLES

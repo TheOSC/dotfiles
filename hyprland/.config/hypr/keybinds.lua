@@ -55,9 +55,6 @@ hl.bind(M .. " + n",          hl.dsp.exec_cmd("kitty --class nmtui --title 'Netw
 -- Emoji picker
 hl.bind(M .. " + period", hl.dsp.exec_cmd("rofimoji --selector fuzzel --action copy"))
 
--- Monitor profile
-hl.bind(M .. " + SHIFT + D", hl.dsp.exec_cmd("monitor-setup"))
-
 -- Media keys
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
