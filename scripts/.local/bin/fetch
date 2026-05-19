@@ -1,22 +1,12 @@
 #!/bin/bash
-
 GIF="/home/max/Nextcloud/Pictures/kittyAnimations/ghostFlame.gif"
 GIF_WIDTH=20
 PAD=$(printf '%*s' $((GIF_WIDTH + 0)) '')
-
-# Run fastfetch once, store output
 FASTFETCH_OUT=$(fastfetch --pipe false 2>/dev/null)
 TOTAL_LINES=$(echo "$FASTFETCH_OUT" | wc -l)
-
-# Print fastfetch output with padding on every line
 echo "$FASTFETCH_OUT" | while IFS= read -r line; do
     echo "${PAD}${line}"
 done
-
-# Move cursor back to top of output
 tput cuu $TOTAL_LINES
-
-# Run chafa in foreground, Ctrl+C to exit
 chafa-run chafa --format symbols --symbols braille+none --colors 8 --fg-only \
     --size ${GIF_WIDTH}x${TOTAL_LINES} "$GIF"
-echo ""

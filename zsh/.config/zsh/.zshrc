@@ -129,4 +129,8 @@ ZSHCONFIG="$XDG_CONFIG_HOME/zsh"
 if [ -z "$FASTFETCH_SHOWN" ]; then
     export FASTFETCH_SHOWN=1
     fetch
+    if [ -f /tmp/.chafa-key ]; then
+        print -z "$(cat /tmp/.chafa-key)"
+        rm -f /tmp/.chafa-key
+    fi
 fi
