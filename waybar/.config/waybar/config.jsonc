@@ -42,8 +42,8 @@
         "orientation": "horizontal",
         "modules": [
             "bluetooth",
-            "custom/nextcloud",
             "pulseaudio",
+            "custom/nextcloud",
             "custom/vpn",
             "network",
             "battery",
