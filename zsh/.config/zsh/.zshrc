@@ -128,5 +128,5 @@ ZSHCONFIG="$XDG_CONFIG_HOME/zsh"
 # Show system info on first terminal of session
 if [ -z "$FASTFETCH_SHOWN" ]; then
     export FASTFETCH_SHOWN=1
-    fastfetch
+    fetch
 fi
