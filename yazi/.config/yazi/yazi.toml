@@ -36,7 +36,7 @@ play = [
     { run = 'mpv "$@"', desc = "mpv", orphan = true },
 ]
 extract = [
-    { run = 'unar "$1"', desc = "Extract here", block = true },
+    { run = '7z x "$1"', desc = "Extract archive", block = true },
 ]
 smart_open = [
     { run = 'bash -c "export PATH=\"$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH\"; if [[ \"$PWD\" == *wallpapers* ]]; then \"$HOME/.local/bin/wallpaper-set\" \"$1\"; else xdg-open \"$1\"; fi" -- "$1"', desc = "Open", orphan = true },
