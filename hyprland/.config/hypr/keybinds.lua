@@ -289,7 +289,7 @@ hl.bind(M .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(M .. " + Tab",       hl.dsp.window.float({ action = "toggle" }))
 hl.bind(M .. " + slash",     hl.dsp.layout("togglesplit"))
 
--- Focus — smart: tiling neighbors, then same-monitor workspaces, then physical monitor, then create (right only)
+-- Focus — smart: tiling neighbors, then same-monitor workspaces, then physical monitor
 hl.bind(M .. " + left",  function() smart_focus("l") end)
 hl.bind(M .. " + right", function() smart_focus("r") end)
 hl.bind(M .. " + up",    function() smart_focus("u") end)
@@ -318,7 +318,7 @@ end
 
 -- System
 hl.bind(M .. " + L",         hl.dsp.exec_cmd("hyprlock"))
-hl.bind(M .. " + SHIFT + R", function() hl.dispatch(hl.dsp.reload()) end)
+hl.bind(M .. " + SHIFT + R", function() hl.reload() end)
 hl.bind(M .. " + V",         hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
 
 -- Emoji picker

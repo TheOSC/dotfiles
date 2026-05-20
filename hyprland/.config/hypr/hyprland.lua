@@ -70,7 +70,6 @@ hl.config({
     },
 })
 
--- Gestures use hl.gesture() in 0.55, NOT hl.config({ gestures = {} })
 hl.gesture({
     fingers   = 3,
     direction = "horizontal",
@@ -100,9 +99,6 @@ hl.config({
 
 -- =============================================================================
 -- MONITOR
--- Managed by hyprdynamicmonitors
--- Configure with: hyprdynamicmonitors tui
--- Fallback for any display not covered by a saved profile
 -- =============================================================================
 hl.monitor({ output = "eDP-1", mode = "1920x1080@60", position = "0x0",     scale = 1 })
 hl.monitor({ output = "DP-4",  mode = "1920x1080@60", position = "-1080x0", scale = 1, transform = 3 })
@@ -124,6 +120,32 @@ hl.env("XDG_CURRENT_DESKTOP",                 "Hyprland")
 hl.env("XDG_SESSION_TYPE",                    "wayland")
 hl.env("XDG_SESSION_DESKTOP",                 "Hyprland")
 hl.env("MOZ_ENABLE_WAYLAND",                  "1")
+-- =============================================================================
+-- MONITOR EVENTS
+-- Re-apply layout on hotplug, pin default workspace per monitor
+-- =============================================================================
+hl.on("monitor.added", function(m)
+    hl.timer(function()
+        local mon = hl.get_monitor(m.name)
+        if mon ~= nil and mon.active_workspace ~= nil then
+            hl.workspace_rule({
+                workspace  = tostring(mon.active_workspace.id),
+                persistent = true,
+                default    = true,
+                monitor    = m.name
+            })
+        end
+    end, { timeout = 500, type = "oneshot" })
+end)
+
+hl.on("monitor.removed", function(m)
+    local workspaces = hl.get_workspaces()
+    for _, ws in ipairs(workspaces) do
+        if ws.monitor.name == m.name then
+            hl.workspace_rule({ workspace = tostring(ws.id), persistent = false })
+        end
+    end
+end)
 
 -- =============================================================================
 -- MODULES
