@@ -139,6 +139,130 @@ local function smart_move(direction)
     end
 end
 
+-- Smart focus: same logic as smart_move but only moves focus, never the window
+local function smart_focus(direction)
+    local cur_ws = hl.get_active_workspace()
+    if cur_ws == nil then return end
+
+    local cur_ws_id = cur_ws.id
+    local cur_mon = hl.get_active_monitor()
+    if cur_mon == nil then return end
+
+    local cur_mon_id = cur_mon.id
+    local monitors = hl.get_monitors()
+    local workspaces = hl.get_workspaces()
+
+    -- Step 1: check for tiling neighbor on current workspace
+    local active_win = hl.get_active_window()
+    if active_win ~= nil then
+        local wins = hl.get_workspace_windows(cur_ws_id)
+        if wins ~= nil and #wins > 1 then
+            local wx = active_win.at.x
+            local wy = active_win.at.y
+            local ww = active_win.size.x
+            local wh = active_win.size.y
+            for _, w in ipairs(wins) do
+                if w.address ~= active_win.address then
+                    if direction == "r" and w.at.x >= wx + ww then
+                        hl.dispatch(hl.dsp.focus({ direction = direction }))
+                        return
+                    end
+                    if direction == "l" and w.at.x + w.size.x <= wx then
+                        hl.dispatch(hl.dsp.focus({ direction = direction }))
+                        return
+                    end
+                    if direction == "u" and w.at.y + w.size.y <= wy then
+                        hl.dispatch(hl.dsp.focus({ direction = direction }))
+                        return
+                    end
+                    if direction == "d" and w.at.y >= wy + wh then
+                        hl.dispatch(hl.dsp.focus({ direction = direction }))
+                        return
+                    end
+                end
+            end
+        end
+    end
+
+    -- Step 2: left/right only — find next/prev workspace on THIS monitor
+    local same_mon_ws = nil
+    if direction == "r" then
+        for _, ws in ipairs(workspaces) do
+            if ws.monitor.id == cur_mon_id and ws.id > cur_ws_id then
+                if same_mon_ws == nil or ws.id < same_mon_ws then
+                    same_mon_ws = ws.id
+                end
+            end
+        end
+    elseif direction == "l" then
+        for _, ws in ipairs(workspaces) do
+            if ws.monitor.id == cur_mon_id and ws.id < cur_ws_id then
+                if same_mon_ws == nil or ws.id > same_mon_ws then
+                    same_mon_ws = ws.id
+                end
+            end
+        end
+    end
+
+    if same_mon_ws ~= nil then
+        hl.dispatch(hl.dsp.focus({ workspace = tostring(same_mon_ws) }))
+        return
+    end
+
+    -- Step 3: find physical monitor in that direction
+    local function get_monitor_in_direction(dir)
+        local best = nil
+        local best_dist = math.huge
+        for _, m in ipairs(monitors) do
+            if m.id ~= cur_mon_id then
+                local in_dir = false
+                local dist = 0
+                if dir == "r" then
+                    local cw = math.min(cur_mon.width, cur_mon.height)
+                    in_dir = m.x >= cur_mon.x + cw - 1
+                    dist = m.x - (cur_mon.x + cw)
+                elseif dir == "l" then
+                    local mw = math.min(m.width, m.height)
+                    in_dir = m.x + mw <= cur_mon.x + 1
+                    dist = cur_mon.x - (m.x + mw)
+                elseif dir == "u" then
+                    in_dir = m.y + m.height <= cur_mon.y + 1
+                    dist = cur_mon.y - (m.y + m.height)
+                elseif dir == "d" then
+                    in_dir = m.y >= cur_mon.y + cur_mon.height - 1
+                    dist = m.y - (cur_mon.y + cur_mon.height)
+                end
+                if in_dir and dist < best_dist then
+                    best = m
+                    best_dist = dist
+                end
+            end
+        end
+        return best
+    end
+
+    local target_mon = get_monitor_in_direction(direction)
+
+    if target_mon ~= nil then
+        hl.dispatch(hl.dsp.focus({ workspace = tostring(target_mon.active_workspace.id) }))
+        return
+    end
+
+    -- Step 4: right only — create new workspace and focus it (no window moves)
+    if direction == "r" then
+        local used = {}
+        for _, ws in ipairs(workspaces) do
+            used[ws.id] = true
+        end
+        local next_ws = cur_ws_id + 1
+        while used[next_ws] do
+            next_ws = next_ws + 1
+        end
+        hl.dispatch(hl.dsp.focus({ workspace = tostring(next_ws) }))
+        return
+    end
+end
+
 -- Applications
 hl.bind(M .. " + Return",    hl.dsp.exec_cmd("kitty"))
 hl.bind(M .. " + B",         hl.dsp.exec_cmd("firefox-launch"))
@@ -165,11 +289,11 @@ hl.bind(M .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(M .. " + Tab",       hl.dsp.window.float({ action = "toggle" }))
 hl.bind(M .. " + slash",     hl.dsp.layout("togglesplit"))
 
--- Focus
-hl.bind(M .. " + left",  hl.dsp.focus({ direction = "l" }))
-hl.bind(M .. " + right", hl.dsp.focus({ direction = "r" }))
-hl.bind(M .. " + up",    hl.dsp.focus({ direction = "u" }))
-hl.bind(M .. " + down",  hl.dsp.focus({ direction = "d" }))
+-- Focus — smart: tiling neighbors, then same-monitor workspaces, then physical monitor, then create (right only)
+hl.bind(M .. " + left",  function() smart_focus("l") end)
+hl.bind(M .. " + right", function() smart_focus("r") end)
+hl.bind(M .. " + up",    function() smart_focus("u") end)
+hl.bind(M .. " + down",  function() smart_focus("d") end)
 
 -- Move windows — arrows
 hl.bind(M .. " + SHIFT + left",  function() smart_move("l") end)
