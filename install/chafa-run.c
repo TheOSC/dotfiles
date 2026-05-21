@@ -48,6 +48,7 @@ int main(int argc, char *argv[]) {
     tcsetattr(STDIN_FILENO, TCSADRAIN, &original_termios);
     kill(child_pid, SIGTERM);
     waitpid(child_pid, NULL, 0);
+    write(STDOUT_FILENO, "\033[?25h", 6);
     if (c >= 32 && c < 127) {
         FILE *f = fopen("/tmp/.chafa-key", "w");
         if (f) { fputc(c, f); fclose(f); }
