@@ -147,6 +147,20 @@ hl.on("monitor.removed", function(m)
     end
 end)
 
+hl.on("hyprland.start", function()
+    hl.timer(function()
+        local mon = hl.get_monitor("eDP-1")
+        if mon ~= nil and mon.active_workspace ~= nil then
+            hl.workspace_rule({
+                workspace  = tostring(mon.active_workspace.id),
+                persistent = true,
+                default    = true,
+                monitor    = "eDP-1"
+            })
+        end
+    end, { timeout = 500, type = "oneshot" })
+end)
+
 -- =============================================================================
 -- MODULES
 -- =============================================================================

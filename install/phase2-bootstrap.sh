@@ -325,9 +325,8 @@ AUR_PACKAGES=(
     # Firefox theming
     pywalfox
 
-    # Jellyfin
-    jellyfin-tui
-    jellyfin-mpv-shim
+    # SubTUI
+    subtui-bin
 
     # Nextcloud sync
     nextcloud-client

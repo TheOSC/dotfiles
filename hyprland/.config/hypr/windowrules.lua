@@ -13,10 +13,10 @@ hl.window_rule({ match = { class = "pulsemixer" }, center = true })
 hl.window_rule({ match = { class = "bluetui" },    float = true })
 hl.window_rule({ match = { class = "bluetui" },    size = { 700, 450 } })
 hl.window_rule({ match = { class = "bluetui" },    center = true })
--- jellyfin-tui
-hl.window_rule({ match = { class = "jellyfin-tui" },   float = true })
-hl.window_rule({ match = { class = "jellyfin-tui" },   size = { 900, 550 } })
-hl.window_rule({ match = { class = "jellyfin-tui" },   center = true })
+-- subtui
+hl.window_rule({ match = { title = "Music" },   float = true })
+hl.window_rule({ match = { title = "Music" },   size = { 900, 600 } })
+hl.window_rule({ match = { title = "Music" },   center = true })
 -- yazi
 hl.window_rule({ match = { class = "yazi" },       size = { 1200, 750 } })
 hl.window_rule({ match = { class = "yazi" },       center = true })

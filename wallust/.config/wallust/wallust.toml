@@ -15,10 +15,10 @@ palette = "salience-dark"
 backend = "kmeans"
 
 # Threshold for color differentiation (higher = more distinct colors)
-threshold = 5
+threshold = 10
 
 # Saturation (0.0 - 1.0). Lower = more muted, fits our aesthetic
-saturation = 65
+saturation = 60
 
 # =============================================================================
 # TEMPLATES

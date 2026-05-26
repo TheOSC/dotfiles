@@ -13,7 +13,7 @@ Last updated: 2026-05
 | Super+B | Browser (firefox) |
 | Super+Space | Launcher (fuzzel) |
 | Super+E | Files (yazi) |
-| Super+M | Jellyfin audio (jellyfin-tui) |
+| Super+M | Music (subtui) |
 | Super+Shift+T | System monitor (btop) |
 | Super+Shift+M | Audio mixer (pulsemixer) |
 | Super+Shift+B | Bluetooth (bluetui) |
@@ -95,7 +95,7 @@ Theme surfaces updated automatically:
 | btop | System monitor (CPU, RAM, processes) | Super+Shift+T |
 | pulsemixer | Audio volume and routing control | Super+Shift+M |
 | bluetui | Bluetooth device management | Super+Shift+B |
-| jellyfin-tui | Jellyfin music streaming client | Super+M |
+| subtui | Navidrome/SubSonic music streaming client | Super+M |
 | yazi | File manager with image previews | Super+E |
 | lazygit | Git TUI — stage, commit, push | lazygit |
 | nmtui | Network/WiFi connection manager | nmtui |

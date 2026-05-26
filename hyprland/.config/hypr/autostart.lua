@@ -6,7 +6,7 @@
 
 hl.on("hyprland.start", function()
 
-    hl.exec_cmd("sleep .5 && hyprlock")
+    hl.exec_cmd("sleep .3 && hyprlock")
     -- rest of autostart below...
 
     -- Wallpaper daemon
