@@ -271,7 +271,7 @@ hl.bind(M .. " + E",         hl.dsp.exec_cmd("kitty --class yazi --title 'File M
 hl.bind(M .. " + SHIFT + T", function() focus_or_spawn("btop",        "kitty --class btop --title 'System Monitor' -e btop") end)
 hl.bind(M .. " + SHIFT + M", function() focus_or_spawn("pulsemixer",  "kitty --class pulsemixer --title 'Audio Mixer' -e pulsemixer") end)
 hl.bind(M .. " + SHIFT + B", function() focus_or_spawn("bluetui",     "kitty --class bluetui --title 'Bluetooth' -e bluetui") end)
-hl.bind(M .. " + M",         function() focus_or_spawn("subtui","kitty --class subtui --title 'Music' -e subtui") end)
+hl.bind(M .. " + M", function() focus_or_spawn("subtui","kitty --class subtui --title 'Music' -e tmux new-session -A -s music subtui") end)
 hl.bind(M .. " + n",         function() focus_or_spawn("nmtui",       "kitty --class nmtui --title 'Network' -e nmtui") end)
 hl.bind(M .. " + F1",        hl.dsp.exec_cmd("kitty --class syshelp --title 'System Reference' -e syshelp"))
 
