@@ -83,6 +83,7 @@ export VISUAL="nvim"
 export PAGER="less"
 export LESS="-R --mouse"
 export MANPAGER="nvim +Man!"           # Open man pages in nvim
+export GOPATH="$HOME/.local/share/go"
 
 # Path — add user bins
 export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
