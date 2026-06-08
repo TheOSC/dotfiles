@@ -36,6 +36,9 @@ hl.on("hyprland.start", function()
     -- Policy kit agent (needed for some privilege escalation prompts)
     hl.exec_cmd("uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 
+    --Hide waybar when games are focusd
+    hl.exec_cmd("sleep 2 && /home/max/.local/bin/waybar-gamefocus")
+    
 end)
 
 

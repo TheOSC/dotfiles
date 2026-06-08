@@ -1,0 +1,27 @@
+#!/bin/bash
+
+WOW_FOCUSED=false
+
+handle() {
+  local event="$1"
+  local class="${event#*>>}"
+
+  case $event in
+    activewindow\>\>*)
+      if echo "$class" | grep -qi "wow.exe"; then
+        if [ "$WOW_FOCUSED" = false ]; then
+          WOW_FOCUSED=true
+          kill -SIGUSR2 $(pidof waybar)
+        fi
+      else
+        if [ "$WOW_FOCUSED" = true ]; then
+          WOW_FOCUSED=false
+          kill -SIGUSR1 $(pidof waybar)
+        fi
+      fi
+      ;;
+  esac
+}
+
+socat - UNIX-CONNECT:/run/user/1000/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock \
+  | while read -r line; do handle "$line"; done
